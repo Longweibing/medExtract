@@ -1,0 +1,22 @@
+    dotsAfterLtrOk:     [qd, bid, tid, qid, qod, qam, qpm, prn, ac, ad, as, au, hs, qhs, od, os, ou, pc, po, qs, ap, ud]
+    dotsAtEndOk:        [q, g, gm, mg, ml, mcg, cc, tab, cap, oint, ung, sol, susp, inh, amp, qv, h, 
+                         hr, d, w, wk, mo, yr, amp, neb, ut dict]
+    canBePlural:        [gm, mg, ml, mcg, cc, tab, cap, tablet, gtt, drop, puff, neb, amp, inhaler, 
+                         hr, hour, day, wk, week, mo, month, yr, year, med, medication,
+                         milligram, microgram, megagram ]
+    plurDotAtEnd:       [gm, mg, ml, mcg, cc]
+	
+	    drugClasse:         ['anti-?\w+', nsaids?, mvis?, multi-?vitamins?, Analgesics?, anesthetics?, narcotics?, salicylates?, muscle relaxants?,
+                         beta-lactams?, tetracyclines?, statins?, diuretics?, corticosteroids?, laxatives?, cathartics?, stool softeners?,
+                         contraceptives?, vitamins?, coagulants?, mood stabilizers?, ssris?, ndris?, saris? ]
+						 
+						     cond:               [ud, ut dict, prm-breakthrough, '(were|was) held', discontinued, "dc'd"]
+    asNeeded:           [prn, as needed]
+    #qualifier:          ['(for)?\s*(severe)?\s*pain']
+    qualifier:          ['(for)?\s*(severe)?\s*(pain|wheez\w*|agita[\w/]+)']
+
+    howManyTimes:       [once, twice, thrice, three times, four times]
+    per:                [per, a, each, every]
+    every:              [q, every, each]
+    howOften:           [qd, bid, tid, qid, qod, daily] #, '(q\.\d+\.h\.)', '(q\s?\d+)' ]
+    otherFreq:          ['ad lib\.?']
