@@ -1,7 +1,12 @@
 package main;
 
-import text.DischargeDocument;
-import text.Section;
+/**
+ * This class represents a DrugEntry, which is a single instance of a drug found in a DischargeDocument.
+ * As such a DrugEntry has all the fields necessary to print an entire row of valid output,
+ * include name, dosage, freq, indices, and so on.
+ * @author Eric
+ *
+ */
 
 public class DrugEntry {
 	private String name=null;
@@ -10,12 +15,12 @@ public class DrugEntry {
 	private String duration=null;
 	private String reason=null;
 	private String mode = null;
-	private String event=null;
-	private String temporal=null;
-	private String certainty=null;
+
 	private String context=null;
 	
-	//TODO: refactor startIndex and endIndex to be absolute
+	//The absolute indices into the DischargeDocument of this DrugEntry. Indices are generic, meaning they
+	//just point to minimal block of text containing all componenets in this doc (as in, within the block,
+	//there may be name, dosage, freq, and so on, in any order).
 	private int startIndex;
 	private int endIndex;
 	
@@ -96,48 +101,15 @@ public class DrugEntry {
 		sb.append(delimiter);
 		sb.append("r=\""+this.getReason()+"\"");
 		sb.append(delimiter);
-		sb.append("e=\""+this.getEvent()+"\"");
-		sb.append(delimiter);
 
-		sb.append("t=\""+this.getTemporal()+"\"");
-		sb.append(delimiter);
-		sb.append("c=\""+this.getCertainty()+"\"");
-		sb.append(delimiter);
 		sb.append("ln=\""+this.getContext()+"\"");
 
 		return sb.toString().toLowerCase().replace("\n",  " ");
 		
 	}
-	public String getEvent() {
-		if (event==null || event.isEmpty()) {
-			return "nm";
-		}
-		return event;
-	}
-	public void setEvent(String event) {
-		this.event = event;
-	}
-	public String getTemporal() {
-		if (temporal==null || temporal.isEmpty()) {
-			return "nm";
-		}
-		return temporal;
-	}
-	public void setTemporal(String temporal) {
-		this.temporal = temporal;
-	}
-	public String getCertainty() {
-		if (certainty==null || certainty.isEmpty()) {
-			return "nm";
-		}
-		return certainty;
-	}
-	public void setCertainty(String certainty) {
-		
-		this.certainty = certainty;
-	}
+	
 	public String getContext() {
-		if (certainty==null || certainty.isEmpty()) {
+		if (context==null || context.isEmpty()) {
 			return "narrative"; //guess
 		}
 		return context;

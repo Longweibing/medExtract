@@ -38,7 +38,7 @@ public class Section {
 		setDoc(d);
 		setStartIndex(s);
 		setEndIndex(e);
-		name=HeaderFinder.findHeaderOfLine(this.getText().split("\n")[0]);
+		name=HeaderFinder.findHeaderOfLine(this.getText().split("\n")[0]); //the name of this header
 		String[] lns=this.getText().split("\n");
 		lines=new ArrayList<Line>();
 		for (String str : lns) {
@@ -91,6 +91,7 @@ public class Section {
 	}
 	
 	public String getText() {
+	
 		return getDoc().getText().substring(getStartIndex(),getEndIndex());
 	}
 	public int getStartIndex() {

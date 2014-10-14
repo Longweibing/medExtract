@@ -8,6 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+
+/**
+ * This class has simple utility functions for reading and writing files.
+ * @author Eric
+ *
+ */
+
 public class FileUtils {
 	/**
 	 * Reads an entire file into memory and returns the contents as a single string

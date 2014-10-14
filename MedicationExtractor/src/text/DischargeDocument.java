@@ -8,38 +8,75 @@ import java.util.List;
 
 import main.FileUtils;
 
+
+/**
+ * An instance of this class represents a single discharge summary. A summary is represented
+ * as a list of sections. Instantiation is done by giving this class a string or file containing
+ * an entire discharge summary. A breakdown into sections is done internally.
+ * @author Eric
+ *
+ */
+
 public class DischargeDocument {
 	private String text;
 	private List<Section> sections;
 	
 	//TODO: Need to be able to find the row/ column given a simple index
 	
+	
+	/**
+	 * Create a new DischargeDocument given a string
+	 * @param t
+	 */
 	public DischargeDocument(String t) {
 		setText(t);
-		setSections(new ArrayList<Section>());
+		sections=new ArrayList<Section>();
+		
+		
+		//breakdown this document into sections using the list of section names contained in the section class
 		HashSet<String> sectionNames=Section.getSectionNames();
 
 		int startIndex=0;
 		int curLocation=0;
+		//iterate through lines, looking for the start of sections
 		for (String s : getText().split("\n")) {
 			
+			//find the 'header' of the current line, with 'header' being defined in findHeaderOfLine
 			String header=HeaderFinder.findHeaderOfLine(s);
-			if (sectionNames.contains(header)) {
+			if (sectionNames.contains(header)) { //if this is a section header
 				if (curLocation!=startIndex) {
 					getSections().add(new Section(this,startIndex,curLocation));
-					startIndex=curLocation;
+					startIndex=curLocation; //start a new window here
 				}
 			}
 			curLocation+=s.length()+1; //+1 to count the removed newline
 		}
+		//the preceeding loop will not have added the final section
+		if (startIndex!=curLocation) {
+			getSections().add(new Section(this,startIndex,curLocation));
+
+		}
 	}
+	
+	/**
+	 * Create a new DischargeDocument given a file
+	 * @param f
+	 */
 	public DischargeDocument (File f) {
 		this(FileUtils.readFile(f));
 	}
 	
+	/**
+	 * Returns the entire text
+	 */
+	
 	public String toString() {
 		return getText();
 	}
+	
+	/**
+	 * Returns the entire text
+	 */
 	public String getText() {
 		return text;
 	}
@@ -47,11 +84,21 @@ public class DischargeDocument {
 		this.text = text;
 	}
 	
-	//returns the row of text this index is in (0 indexed rows)
+/**
+ * Given an absolute index in characters, returns the 0-indexed row that character is in. 
+ * Basically just counts the number of newlines that occurs before the given index
+ * @param index
+ * @return
+ */
 	public int getRowOfIndex(int index) {
 		return (countChars(text.substring(0,index),'\n'));
 	}
-	
+	/**
+	 * Counts occurrences of the given character in the given string
+	 * @param str
+	 * @param character
+	 * @return
+	 */
 	private static int countChars(String str, char character) {
 		int count=0;
 		for (char c : str.toCharArray()) {
@@ -64,7 +111,5 @@ public class DischargeDocument {
 	public List<Section> getSections() {
 		return sections;
 	}
-	public void setSections(List<Section> sections) {
-		this.sections = sections;
-	}
+
 }

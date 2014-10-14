@@ -16,19 +16,22 @@ import text.Section;
 public class Main {
 	public static File getResource(String name) {
 		
-		return new File(Main.class.getResource("/resources/"+name).getFile());
+		return new File(Main.class.getResource(name).getFile());
 	}		
 	public static void main(String[] args) throws IOException {
-		//Section.compileSections(getResource("sections.txt"));
-		//MerkiIntegration i=new MerkiIntegration("C:/users/eric/desktop/healthdatapapers/project2/merkimaster/");
+		
+		//just some test code running merki on a file
+		Section.compileSections(getResource("/resources/sections.txt")); //read the sections.txt file to get a list of sections
+		MerkiIntegration i=new MerkiIntegration(getResource("/merki").getAbsolutePath());
 
-		//File testFile=new File("c:/users/eric/desktop/studentdata/studenttrainingfiles/11995.txt");
-		//DischargeDocument text=new DischargeDocument(testFile);
-		//i.runMerki(text);
-		//for (DrugEntry e : i.callMerki(FileUtils.readFile(testFile), new File("C:/users/eric/desktop/testdatafile.txt"))) {
-		//	System.out.println(e);
-		//}
-		List<File> dirs=new ArrayList<File> ();
+		File testFile=new File("c:/users/eric/desktop/studentdata/studenttrainingfiles/11995.txt");
+		DischargeDocument text=new DischargeDocument(testFile);
+		for (DrugEntry d : i.runMerki(text)) {
+			System.out.println(d);
+		}
+		
+		//the code below just compiles section names. It is no longer needed for the project.
+		/*List<File> dirs=new ArrayList<File> ();
 		dirs.add(new File("c:/users/eric/desktop/studentdata/studenttrainingfiles"));
 		dirs.add(new File("c:/users/eric/desktop/studentdata/AdditionalDischarges-set4"));
 
@@ -53,7 +56,7 @@ public class Main {
 			writer.close();
 		} catch (Exception e) {
 			
-		}
+		}*/
 	}
 	
 

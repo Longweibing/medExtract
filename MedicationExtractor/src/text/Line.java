@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * represents a single line of text
+ * represents a single line of text (might not be necessary).
  * @author Eric
  *
  */
