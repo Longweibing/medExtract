@@ -55,6 +55,7 @@ public class MerkiIntegration {
 		for (Section s : d.getSections()) {
 			List<DrugEntry> newEntries=callMerki(s.getText());
 			for (DrugEntry e : newEntries) {
+				e.setD(d);
 				//adjust indices to be absolute with relation to the document d.
 				e.setStartIndex(e.getStartIndex()+s.getStartIndex());
 				e.setEndIndex(e.getEndIndex()+s.getStartIndex());
@@ -95,7 +96,6 @@ public class MerkiIntegration {
 			
 			//MERKI outputs results as an XML document, and this reads that output as a string
 			String xmlString=FileUtils.readStream(stream);
-			System.out.println(xmlString);
 			//write the XML to our temp file for parsing
 			FileUtils.writeFile(xmlString, tempFile);
 			

@@ -1,5 +1,7 @@
 package main;
 
+import text.DischargeDocument;
+
 /**
  * This class represents a DrugEntry, which is a single instance of a drug found in a DischargeDocument.
  * As such a DrugEntry has all the fields necessary to print an entire row of valid output,
@@ -9,17 +11,19 @@ package main;
  */
 
 public class DrugEntry {
+	//the following strings all correspond to text pulled from the discharge summaries. Strings below
+	//should EXACTLY match whatever was pulled from the summaries, including capitalizations, newlines, etc.
 	private String name=null;
 	private String dosage=null;
 	private String freq=null;
 	private String duration=null;
 	private String reason=null;
 	private String mode = null;
-
-	private String context=null;
+	private DischargeDocument d; // the document that this drug is a part of
+	private String context=null; //narrative or list
 	
 	//The absolute indices into the DischargeDocument of this DrugEntry. Indices are generic, meaning they
-	//just point to minimal block of text containing all componenets in this doc (as in, within the block,
+	//just point to minimal block of text containing all components in this doc (as in, within the block,
 	//there may be name, dosage, freq, and so on, in any order).
 	private int startIndex;
 	private int endIndex;
@@ -90,16 +94,26 @@ public class DrugEntry {
 		String delimiter="||";
 		StringBuilder sb=new StringBuilder();
 		sb.append("m=\""+this.getName()+"\"");
+		sb.append(" "+getDrugNameOffset());
 		sb.append(delimiter);
 		sb.append("do=\""+this.getDosage()+"\"");
+		sb.append(" "+getDoseOffset());
 		sb.append(delimiter);
 		sb.append("mo=\""+this.getMode()+"\"");
+		sb.append(" "+getModeOffset());
+
 		sb.append(delimiter);
 		sb.append("f=\""+this.getFreq()+"\"");
+		sb.append(" "+getFreqOffset());
+
 		sb.append(delimiter);
 		sb.append("du=\""+this.getDuration()+"\"");
+		sb.append(" "+getDurationOffset());
+
 		sb.append(delimiter);
 		sb.append("r=\""+this.getReason()+"\"");
+		sb.append(" "+getReasonOffset());
+
 		sb.append(delimiter);
 
 		sb.append("ln=\""+this.getContext()+"\"");
@@ -130,6 +144,74 @@ public class DrugEntry {
 	}
 	public void setEndIndex(int endIndex) {
 		this.endIndex = endIndex;
+	}
+	
+	/**
+	 * Returns the string offset of the given index in the form row:token
+	 * @param index
+	 * @return
+	 */
+	public String getFormattedOffset(int row, int token) {
+		String offset=""+row+":"+token;
+		
+		return offset;
+	}
+	
+	
+	//TODO: is this method sufficient for getting the correct offset?
+	public String getDrugNameOffset() {
+		return getOffsetOfString(name);
+
+	}
+	
+	public String getModeOffset() {
+		if (getMode().equals("nm")) {
+			return ""; //no offset
+		}
+		return getOffsetOfString(getMode());
+	}
+	
+	public String getFreqOffset() {
+		if (getFreq().equals("nm")) {
+			return ""; //no offset
+		}
+		return getOffsetOfString(getFreq());
+	}
+	
+	public String getDoseOffset() {
+		if (getDosage().equals("nm")) {
+			return ""; //no offset
+		}
+		return getOffsetOfString(getDosage());
+	}
+	public String getDurationOffset() {
+		if (getDuration().equals("nm")) {
+			return ""; //no offset
+		}
+		return getOffsetOfString(getDuration());
+	}
+	
+	public String getReasonOffset() {
+		if (getReason().equals("nm")) {
+			return ""; //no offset
+		}
+		return getOffsetOfString(getReason());
+	}
+	
+	public String getOffsetOfString(String str) {
+		int index=getD().getText().substring(startIndex,endIndex+1).indexOf(str)+startIndex;
+		int endIndex=index+(str.length()-1);
+		int row1=getD().getRowOfIndex(index);
+		int token1=getD().getTokenOfIndex(index);
+		int row2=getD().getRowOfIndex(endIndex);
+		int token2=getD().getTokenOfIndex(endIndex);
+		return getFormattedOffset(row1,token1) + " "+getFormattedOffset(row2,token2);
+	}
+	public DischargeDocument getD() {
+		return d;
+	}
+	public void setD(DischargeDocument d) {
+		this.d = d;
 	}
 	
 }

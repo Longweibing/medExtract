@@ -94,6 +94,11 @@ public class Section {
 	
 		return getDoc().getText().substring(getStartIndex(),getEndIndex());
 	}
+	
+	/**
+	 * Absolute index of DischargeDocument where this section begins.
+	 * @return
+	 */
 	public int getStartIndex() {
 		return startIndex;
 	}

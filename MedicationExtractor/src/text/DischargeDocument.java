@@ -91,7 +91,36 @@ public class DischargeDocument {
  * @return
  */
 	public int getRowOfIndex(int index) {
-		return (countChars(text.substring(0,index),'\n'));
+		return (countChars(text.substring(0,index),'\n')+1);
+	}
+	
+	/**
+	 * Gets the token that the given index is a part of. Tokens
+	 * are delimited by whitespace and start from 0 on each row.
+	 * @param index
+	 * @return
+	 */
+	public int getTokenOfIndex(int index) {
+		
+		boolean prevWhiteSpace=false; //precondition that index is on a token, so this must be false to start
+		int token=0; //count the number of tokens occurring before the current one
+		for (int i=index;i>=0;i--) {
+			Character c=text.charAt(i);
+			if (c=='\n') {
+				break; //we have hit the end of this line, so we are done
+			}
+			if (Character.isWhitespace(c)) {
+				if (!prevWhiteSpace) {
+					token+=1;
+					
+				}
+				prevWhiteSpace=true; //possible to have multiple spaces, so make sure we don't count each space as a token
+			} else {
+				prevWhiteSpace=false;
+			}
+			
+		}
+		return token;
 	}
 	/**
 	 * Counts occurrences of the given character in the given string
