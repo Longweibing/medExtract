@@ -14,13 +14,18 @@ public class Section {
 	private static HashSet<String> sectionNames=new HashSet<String>();
 	
 	private static HashMap<String, String> nameToType=new HashMap<String,String>(); //maps section names to types
-	//TODO: populate this with names + whether to ignore
-	private static HashMap<String,Boolean> nameToIgnore=new HashMap<String,Boolean>();
+	
+	//contains a list of section headers that should not be parsed for medications
+	private static HashSet<String> namesToIgnore=new HashSet<String>();
 	
 	
-	public static void compileSections(File sectionFile) {
+	public static void compileSections(File sectionFile, File badSectionFile) {
 		for (String s : FileUtils.readFile(sectionFile).split("\n")) {
 			getSectionNames().add(s);
+		}
+		
+		for (String s : FileUtils.readFile(badSectionFile).split("\n")) {
+			namesToIgnore.add(s);
 		}
 	}
 	
@@ -70,8 +75,13 @@ public class Section {
 		return Section.nameToType.get(this.name);
 	}
 	
+	
+	/**
+	 * Returns true if this section should be ignored
+	 * @return
+	 */
 	public boolean doIgnore() {
-		return Section.nameToIgnore.get(this.name);
+		return Section.namesToIgnore.contains(this.name);
 	}
 
 	public static HashSet<String> getSectionNames() {

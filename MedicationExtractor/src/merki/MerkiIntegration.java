@@ -17,9 +17,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import drugs.DrugEntry;
 import text.DischargeDocument;
 import text.Section;
-import main.DrugEntry;
 import main.FileUtils;
 import main.Main;
 
@@ -52,7 +52,7 @@ public class MerkiIntegration {
 	 */
 	public List<DrugEntry> runMerki(DischargeDocument d) {
 		List<DrugEntry> entries=new ArrayList<DrugEntry>();
-		for (Section s : d.getSections()) {
+		for (Section s : d.getGoodSections()) {
 			List<DrugEntry> newEntries=callMerki(s.getText());
 			for (DrugEntry e : newEntries) {
 				e.setD(d);
@@ -133,13 +133,14 @@ public class MerkiIntegration {
 	 * @return
 	 */
 	
-	public static DrugEntry convertNodeToDrugEntry(Node n) {
+	public static DrugEntry convertNodeToDrugEntry(Node n, boolean possible) {
 		DrugEntry e=new DrugEntry();
 		Element element=(Element) n;
-		e.setName(getStringFromChild(element,"drugName"));
-		e.setDosage(getStringFromChild(element,"dose"));
-		e.setFreq(getStringFromChild(element,"freq"));
-		e.setMode(getStringFromChild(element,"route"));
+		e.setName(getStringFromChild(element,"drugName").trim());
+		e.setDosage(getStringFromChild(element,"dose").trim());
+		e.setFreq(getStringFromChild(element,"freq").trim());
+		e.setMode(getStringFromChild(element,"route").trim());
+		
 		e.setStartIndex(Integer.parseInt(getStringFromChild(element,"startChar")));
 		e.setEndIndex(Integer.parseInt(getStringFromChild(element,"endChar")));
 
@@ -160,13 +161,14 @@ public class MerkiIntegration {
 			NodeList n=configDoc.getElementsByTagName("drug");
 			List<DrugEntry> drugs=new ArrayList<DrugEntry>();
 			for (int i=0;i<n.getLength();i++) {
-				drugs.add(convertNodeToDrugEntry(n.item(i)));
+				drugs.add(convertNodeToDrugEntry(n.item(i),false));
 			}
 			
-			n=configDoc.getElementsByTagName("possibleDrug");
-			for (int i=0;i<n.getLength();i++) {
-				drugs.add(convertNodeToDrugEntry(n.item(i)));
-			}
+			//not adding possibleDrug tags, as they seem to very rarely work
+			//n=configDoc.getElementsByTagName("possibleDrug");
+			//for (int i=0;i<n.getLength();i++) {
+			//	drugs.add(convertNodeToDrugEntry(n.item(i),true));
+			//}
 			
 			
 			return drugs;

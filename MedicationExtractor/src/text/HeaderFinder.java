@@ -63,7 +63,12 @@ public class HeaderFinder {
 	
 	public static String findHeaderOfLine(String str) {
 		int lastChar=findIndexOfFirstNonCapitalLetter(str);
-		return str.substring(0,lastChar);
+		if (lastChar!=-1) {
+			return str.substring(0,lastChar);
+
+		} else {
+			return str;
+		}
 	}
 	
 	public static int findIndexOfFirstNonCapitalLetter(String str) {

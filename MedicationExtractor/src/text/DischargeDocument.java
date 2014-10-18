@@ -140,5 +140,20 @@ public class DischargeDocument {
 	public List<Section> getSections() {
 		return sections;
 	}
+	
+	/**
+	 * Gets a list of sections that we do want to consider for drugs
+	 * @return
+	 */
+	public List<Section> getGoodSections() {
+		List<Section> newSections=new ArrayList<Section>();
+		for (Section s : sections) {
+			if (!s.doIgnore()) {
+				newSections.add(s);
+			}
+		}
+		
+		return newSections;
+	}
 
 }
