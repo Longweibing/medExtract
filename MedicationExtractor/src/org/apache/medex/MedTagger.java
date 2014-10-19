@@ -347,7 +347,6 @@ public class MedTagger {
 			// detect sentences in the document
 			writeLog("----------------------------------------------\n");
 			writeLog(doc.fname() + "\n");
-			long t1 = System.currentTimeMillis();
 
 			if (if_detect_sents.equals("y")) {
 				this.sb.detect_boundaries(doc);
@@ -359,7 +358,6 @@ public class MedTagger {
 					Global.SuffixArrayMode.WORD,
 					Global.SuffixArrayCaseMode.NON_SENSITIVE);
 			Vector<SuffixArrayResult> result = sa.search();
-			long t2 = System.currentTimeMillis();
 			//System.out.println("sentence boundary cost:"+(t2-t1));
 			// read the search results and stored them into structure of
 			// "Document"
@@ -515,7 +513,6 @@ public class MedTagger {
 				token_tags = rule_engine.transform(rule_engine,
 						sent_token_array, sent_tag_array, sent_tag_index_array,
 						sents_token_map, section, log, if_drool_engine);
-				long tsent2 = System.currentTimeMillis();
 				//System.out.println("rule engine cost:"+(tsent2-tsent1));
 				/*
 				out.write("** Output from tagger : token_tags :"+token_tags+"\n");

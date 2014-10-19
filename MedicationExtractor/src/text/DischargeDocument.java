@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import drugs.DrugEntry;
 import main.FileUtils;
 
 
@@ -21,6 +22,7 @@ public class DischargeDocument {
 	private String text;
 	private List<Section> sections;
 	
+	private List<DrugEntry> drugEntries;
 	//TODO: Need to be able to find the row/ column given a simple index
 	
 	
@@ -31,7 +33,7 @@ public class DischargeDocument {
 	public DischargeDocument(String t) {
 		setText(t);
 		sections=new ArrayList<Section>();
-		
+		drugEntries=new ArrayList<DrugEntry>();
 		
 		//breakdown this document into sections using the list of section names contained in the section class
 		HashSet<String> sectionNames=Section.getSectionNames();
@@ -154,6 +156,34 @@ public class DischargeDocument {
 		}
 		
 		return newSections;
+	}
+
+	public List<DrugEntry> getDrugEntries() {
+		return drugEntries;
+	}
+	
+	public void addDrugEntry(DrugEntry d) {
+		drugEntries.add(d);
+	}
+	public void addDrugEntries(List<DrugEntry> d) {
+		drugEntries.addAll(d);
+	}
+
+	public void setDrugEntries(List<DrugEntry> drugEntries) {
+		this.drugEntries = drugEntries;
+	}
+	
+	/**
+	 * Gets the full output for this document
+	 * @return
+	 */
+	public String getDrugData() {
+		StringBuilder sb=new StringBuilder();
+		for (DrugEntry d : drugEntries) {
+			sb.append(d.toString());
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 }

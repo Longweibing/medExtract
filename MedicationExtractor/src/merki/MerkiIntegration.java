@@ -55,7 +55,9 @@ public class MerkiIntegration {
 		for (Section s : d.getGoodSections()) {
 			List<DrugEntry> newEntries=callMerki(s.getText());
 			for (DrugEntry e : newEntries) {
+				//documents and drugs refer to each other. 
 				e.setD(d);
+				d.addDrugEntry(e);
 				//adjust indices to be absolute with relation to the document d.
 				e.setStartIndex(e.getStartIndex()+s.getStartIndex());
 				e.setEndIndex(e.getEndIndex()+s.getStartIndex());
