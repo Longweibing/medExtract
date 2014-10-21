@@ -1,18 +1,83 @@
 package drugs;
 
+import java.util.List;
+
+import text.DischargeDocument;
+
 public class DrugUtils {
 	
-	//checks to see if the two drug entries are referring to the 
-	//exact same drug.
 	
-	//TODO: We may want a more complex algorithm to handle cases
-	//where drugs overlap (like "insulin" and "insulin nph")
+	/**
+	 * Given a DischargeDocument with a set of drugs, filters and merges all duplicate drugs.
+	 * At the end of this method, no duplicate drugs will be present in d
+	 * @param d
+	 */
+	public static void filterDuplicateDrugs(DischargeDocument d) {
+		while (true) {
+			boolean foundDupe=false;
+			List<DrugEntry> drugs=d.getDrugEntries();
+			if (drugs==null || drugs.size()<2) {
+				break; //can't be duplicates without at least 2 drugs
+			}
+			//pairwise compare all drugs. O(n squared), but with only double-digit drugs that is fine
+			
+			for (int a=0;a<drugs.size()-1;a++) {
+				for (int b=a+1;b<drugs.size();b++) {
+					DrugEntry d1=drugs.get(a);
+					DrugEntry d2=drugs.get(b);
+					if (areSame(d1,d2)) {
+						foundDupe=true;
+						DrugEntry mergedDrug=mergeEntries(d1,d2);
+						
+						//remove the two child entries and add back the merged entry, thereby removing the duplicate
+						drugs.remove(b);
+						drugs.remove(a);
+						
+						drugs.add(mergedDrug);
+						break;
+					}
+				}
+				if (foundDupe) {
+					break; //need to restart iteration since we changed the list
+				}
+			}
+			
+			
+			//no more duplicates, so we are done
+			if (!foundDupe) {
+				break;
+			}
+		}
+	}
+	
+	
+	/**
+	 * Checks to see if two drug entries are about the same drug. Two
+	 * drugs are marked as being the same if they have any overlap at all between
+	 * them in the text. So, "insulin" and "insulin nph" may still be marked as a match.
+	 * 
+	 * Drugs must match IN THE TEXT. "insulin" and "insulin" do not necessarily match.
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static boolean areSame(DrugEntry a, DrugEntry b) {
-		String offset1=a.getDrugNameOffset();
-		String offset2=b.getDrugNameOffset();
+		int start1=a.getDrugIndex();
+		int end1=start1+a.getName().length(); // end is inclusive
+		int start2=b.getDrugIndex();
+		int end2=start2+b.getName().length();
 		
-		//if they have the same offset, they are the same thing
-		if (a.equals(b)) {
+		//check for any overlap between the ranges
+		if (start1>=start2 && start1<=end2) {
+			return true;
+		}
+		if (end1>=start2 && end1<=end2) {
+			return true;
+		}
+		if (start2>=start1 && start2<=end1) {
+			return true;
+		}
+		if (end2>=start1 && end2<=end1) {
 			return true;
 		}
 		return false;

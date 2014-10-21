@@ -12,6 +12,7 @@ import org.apache.medex.MedEx;
 import org.apache.medex.MedTagger;
 
 import drugs.DrugEntry;
+import drugs.DrugUtils;
 import medex.MedexResultsParser;
 import merki.MerkiIntegration;
 import text.DischargeDocument;
@@ -52,7 +53,6 @@ public class Main {
 		MerkiIntegration i=new MerkiIntegration(getResource("/merki").getAbsolutePath()); 
 		
 		
-		
 		//step one above
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
@@ -64,16 +64,24 @@ public class Main {
 			docs.add(text);
 			
 			//part b above
+			System.out.println("parsing MedEx results");
 			MedexResultsParser.parseMedexResults(text, new File(medexOutput,f.getName()));
 			//part c above. Adds all drugs MERKI can find to this element
+			System.out.println("running MERKI");
 			i.runMerki(text);
 			
+			//filter out duplicates
+			System.out.println("filtering out duplicates");
+			DrugUtils.filterDuplicateDrugs(text);
+			//TODO: Down here, we will want a function that takes a DischargeDocument that 
+			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
+			
+			System.out.println("printing out results");
 			File outputFile=new File(outputDirectory,f.getName());
 			FileUtils.writeFile(text.getDrugData(), outputFile);
 			
 			
-			//TODO: Down here, we will want a function that takes a DischargeDocument that 
-			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
+			
 		}
 		
 		

@@ -59,22 +59,29 @@ public class MedexResultsParser {
 			String[] attributes=line.split("\\|");
 			//get drug name first
 			int[] i=getIndices(attributes[1]);
-			System.out.println(line);
-			for (String s : attributes) {
-				System.out.println(s);
-			}
 			minStart=i[0];
 			maxEnd=i[1];
 			e.setName(docText.substring(i[0],i[1]));
 			
-			//dosage is at 4
+			//dosage is at 4 OR 5
 			i=getIndices(attributes[4]);
 			if (i!=null) {
 				minStart=Math.min(minStart, i[0]);
 				maxEnd=Math.max(maxEnd, i[1]);
 				
 				e.setDosage(docText.substring(i[0],i[1]));
+			} else {
+				//if we couldn't find a dosage at 4, go to 5
+				i=getIndices(attributes[5]);
+				if (i!=null) {
+					minStart=Math.min(minStart, i[0]);
+					maxEnd=Math.max(maxEnd, i[1]);
+					
+					e.setDosage(docText.substring(i[0],i[1]));
+				}
 			}
+			
+			
 			
 			//mode is at 6
 			i=getIndices(attributes[6]);
@@ -87,6 +94,14 @@ public class MedexResultsParser {
 			
 			//frequency is at 7
 			i=getIndices(attributes[7]);
+			if (i!=null) {
+				minStart=Math.min(minStart, i[0]);
+				maxEnd=Math.max(maxEnd, i[1]);
+				
+				e.setFreq(docText.substring(i[0],i[1]));
+			}
+			//duration is at 8
+			i=getIndices(attributes[8]);
 			if (i!=null) {
 				minStart=Math.min(minStart, i[0]);
 				maxEnd=Math.max(maxEnd, i[1]);
