@@ -81,7 +81,7 @@ public class MerkiIntegration {
 	public List<DrugEntry>  callMerki(String text) {
 		//TODO: Might want to choose a better location for this temp file
 		
-		File tempFile=new File("C:/users/eric/desktop/fakefile.tmp"); //just need a file to write temporary results to.
+		File tempFile=new File(installDir,"fakefile.tmp"); 
 		try {
 			
 			//next set of lines just runs MERKI from the command line
@@ -92,8 +92,7 @@ public class MerkiIntegration {
 			args[1]=new File(installDir,"parseFromShell.pl").getAbsolutePath();
 			FileUtils.writeFile(text, tempFile);
 			args[2]=tempFile.getAbsolutePath();
-			Process p = rt.exec(args,null,new File(installDir));
-			rt.exec(args, null, new File(installDir)); //run MERKI from within its install directory
+			Process p = rt.exec(args,null,new File(installDir)); //run MERKI
 			InputStream stream=p.getInputStream();
 			
 			//MERKI outputs results as an XML document, and this reads that output as a string

@@ -13,19 +13,22 @@ public class Section {
 	
 	private static HashSet<String> sectionNames=new HashSet<String>();
 	
-	private static HashMap<String, String> nameToType=new HashMap<String,String>(); //maps section names to types
+	private static HashSet<String> listSections=new HashSet<String>(); //section names that are lists
 	
 	//contains a list of section headers that should not be parsed for medications
 	private static HashSet<String> namesToIgnore=new HashSet<String>();
 	
 	
-	public static void compileSections(File sectionFile, File badSectionFile) {
+	public static void compileSections(File sectionFile, File badSectionFile, File listSectionFile) {
 		for (String s : FileUtils.readFile(sectionFile).split("\n")) {
 			getSectionNames().add(s);
 		}
 		
 		for (String s : FileUtils.readFile(badSectionFile).split("\n")) {
 			namesToIgnore.add(s);
+		}
+		for (String s : FileUtils.readFile(listSectionFile).split("\n")) {
+			listSections.add(s);
 		}
 	}
 	
@@ -71,8 +74,8 @@ public class Section {
 	
 	
 	
-	public String getType() {
-		return Section.nameToType.get(this.name);
+	public boolean isList() {
+		return listSections.contains(this.getName());
 	}
 	
 	

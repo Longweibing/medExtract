@@ -20,7 +20,7 @@ import main.FileUtils;
 
 public class DischargeDocument {
 	private String text;
-	private List<Section> sections;
+	private List<Section> sections; //an ORDERED list of sections in this document
 	
 	private List<DrugEntry> drugEntries;
 	//TODO: Need to be able to find the row/ column given a simple index
@@ -47,7 +47,7 @@ public class DischargeDocument {
 			String header=HeaderFinder.findHeaderOfLine(s);
 			if (sectionNames.contains(header)) { //if this is a section header
 				if (curLocation!=startIndex) {
-					getSections().add(new Section(this,startIndex,curLocation));
+					sections.add(new Section(this,startIndex,curLocation));
 					startIndex=curLocation; //start a new window here
 				}
 			}
@@ -55,7 +55,7 @@ public class DischargeDocument {
 		}
 		//the preceeding loop will not have added the final section
 		if (startIndex!=curLocation) {
-			getSections().add(new Section(this,startIndex,curLocation));
+			sections.add(new Section(this,startIndex,curLocation));
 
 		}
 	}
@@ -184,6 +184,43 @@ public class DischargeDocument {
 			sb.append("\n");
 		}
 		return sb.toString();
+	}
+	
+	/**
+	 * Gets the section that contains this absolute index (in characters) into the text
+	 * @param index
+	 * @return
+	 */
+	public Section getSection(int index) {
+		for (Section s : sections) {
+		
+			if (s.getEndIndex()>=index) {
+				return s;
+			}
+		}
+		return null; //index was outside the range of this document
+	}
+	
+	/**
+	 * Given an index into this document and a size, returns a substring 
+	 * of the given size for which the index is the middle character.
+	 * In other words, gives back a substring of text surrounding the given index.
+	 * If "size" is large enough to cause an out of bounds exception, returns as
+	 * much text as possible
+	 * @param index
+	 * @param size
+	 * @return
+	 */
+	public String getSurroundingText(int index,int size) {
+		int startIndex=index-(size/2);
+		if (startIndex<0) {
+			startIndex=0;
+		}
+		int endIndex=index+(size/2);
+		if (endIndex>text.length()){
+			endIndex=text.length();
+		}
+		return text.substring(startIndex,endIndex);
 	}
 
 }

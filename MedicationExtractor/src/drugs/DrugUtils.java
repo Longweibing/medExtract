@@ -103,7 +103,7 @@ public class DrugUtils {
 			return null;
 		}
 		DrugEntry newEntry=new DrugEntry();
-		newEntry.setD(a.getD());
+		newEntry.setD(a.getDocument());
 		//make the start and end as wide as possible based on a and b
 		newEntry.setStartIndex(Math.min(a.getStartIndex(), b.getStartIndex()));
 		newEntry.setEndIndex(Math.max(a.getEndIndex(), b.getEndIndex()));

@@ -31,7 +31,7 @@ public class MedEx{
 	static String grammar_file = location+File.separator + "grammar.txt";
 	static String if_detect_sents = "y";
 	static String if_freq_norm = "n";
-	static String if_drool_engine = "y";
+	static String if_drool_engine = "n";
 	static String if_offset_showed = "y";
 	static String input_dir = "";
 	static String output_dir = "";

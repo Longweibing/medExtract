@@ -1,5 +1,7 @@
 package main;
 
+import i2b2.i2b2Integration;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import org.apache.medex.MedTagger;
 
 import drugs.DrugEntry;
 import drugs.DrugUtils;
+import filter.FilterManager;
 import medex.MedexResultsParser;
 import merki.MerkiIntegration;
 import text.DischargeDocument;
@@ -48,11 +51,21 @@ public class Main {
 	 * 		g) For each document, write out results to the output directory
 	 */
 	private static void getResults(File inputDirectory, File outputDirectory) throws IOException {
+		//reads in section lexicons and stores them in memory for the duration of the execution
+		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
+		File goldStandard=getResource("/resources/StudentData/goldStandards/gold.xml");
+		File records=getResource("/resources/StudentData/studentTrainingFiles");
 		File medexOutput=new File(outputDirectory, "medex");
+		File finalOutput=new File(outputDirectory, "results");
+		finalOutput.mkdirs();
 		medexOutput.mkdirs();
+		FilterManager.loadFilters();
+		i2b2Integration i2b2=new i2b2Integration(getResource("/i2b2").getAbsolutePath(),
+				goldStandard.getAbsolutePath(),records.getAbsolutePath(), finalOutput.getAbsolutePath());
+		
 		MerkiIntegration i=new MerkiIntegration(getResource("/merki").getAbsolutePath()); 
 		
-		
+
 		//step one above
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
@@ -76,14 +89,21 @@ public class Main {
 			//TODO: Down here, we will want a function that takes a DischargeDocument that 
 			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
 			
+			
+			//step f above. New filters can be defined in the filter package
+			System.out.println("filtering out false positives");
+			FilterManager.runAllFilters(text);
+			
 			System.out.println("printing out results");
-			File outputFile=new File(outputDirectory,f.getName());
+			File outputFile=new File(finalOutput,f.getName()+".i2b2.entries");
+			
 			FileUtils.writeFile(text.getDrugData(), outputFile);
 			
 			
 			
 		}
 		
+		i2b2.printResults();
 		
 	}
 	

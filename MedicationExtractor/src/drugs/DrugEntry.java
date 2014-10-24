@@ -1,6 +1,7 @@
 package drugs;
 
 import text.DischargeDocument;
+import text.Section;
 
 /**
  * This class represents a DrugEntry, which is a single instance of a drug found in a DischargeDocument.
@@ -94,39 +95,40 @@ public class DrugEntry {
 		String delimiter="||";
 		StringBuilder sb=new StringBuilder();
 		sb.append("m=\""+this.getName()+"\"");
-		sb.append(" "+getDrugNameOffset());
+		sb.append(getDrugNameOffset());
 		sb.append(delimiter);
 		sb.append("do=\""+this.getDosage()+"\"");
-		sb.append(" "+getDoseOffset());
+		sb.append(getDoseOffset());
 		sb.append(delimiter);
 		sb.append("mo=\""+this.getMode()+"\"");
-		sb.append(" "+getModeOffset());
+		sb.append(getModeOffset());
 
 		sb.append(delimiter);
 		sb.append("f=\""+this.getFreq()+"\"");
-		sb.append(" "+getFreqOffset());
+		sb.append(getFreqOffset());
 
 		sb.append(delimiter);
 		sb.append("du=\""+this.getDuration()+"\"");
-		sb.append(" "+getDurationOffset());
+		sb.append(getDurationOffset());
 
 		sb.append(delimiter);
 		sb.append("r=\""+this.getReason()+"\"");
-		sb.append(" "+getReasonOffset());
+		sb.append(getReasonOffset());
 
 		sb.append(delimiter);
 
 		sb.append("ln=\""+this.getContext()+"\"");
-
+	
 		return sb.toString().toLowerCase().replace("\n",  " ");
 		
 	}
 	
 	public String getContext() {
-		if (context==null || context.isEmpty()) {
-			return "narrative"; //guess
+		if (this.getSection().isList()) {
+			return "list";
 		}
-		return context;
+		return "narrative";
+		
 	}
 	public void setContext(String context) {
 		this.context = context;
@@ -166,7 +168,7 @@ public class DrugEntry {
 	
 	//returns the absolute index of this drug
 	public int getDrugIndex() {
-		return getD().getText().substring(startIndex,endIndex+1).indexOf(name)+startIndex;
+		return getDocument().getText().substring(startIndex,endIndex+1).indexOf(name)+startIndex;
 
 	}
 	
@@ -205,16 +207,24 @@ public class DrugEntry {
 	}
 	
 	public String getOffsetOfString(String str) {
-		int index=getD().getText().substring(startIndex,endIndex+1).indexOf(str)+startIndex;
+		int index=getDocument().getText().substring(startIndex,endIndex+1).indexOf(str)+startIndex;
 		int endIndex=index+(str.length()-1);
-		int row1=getD().getRowOfIndex(index);
-		int token1=getD().getTokenOfIndex(index);
-		int row2=getD().getRowOfIndex(endIndex);
-		int token2=getD().getTokenOfIndex(endIndex);
-		return getFormattedOffset(row1,token1) + " "+getFormattedOffset(row2,token2);
+		int row1=getDocument().getRowOfIndex(index);
+		int token1=getDocument().getTokenOfIndex(index);
+		int row2=getDocument().getRowOfIndex(endIndex);
+		int token2=getDocument().getTokenOfIndex(endIndex);
+		return " "+getFormattedOffset(row1,token1) + " "+getFormattedOffset(row2,token2);
 	}
-	public DischargeDocument getD() {
+	public DischargeDocument getDocument() {
 		return d;
+	}
+	
+	/**
+	 * Returns the section that this drug is a part of
+	 * @return
+	 */
+	public Section getSection() {
+		return d.getSection(this.getDrugIndex());
 	}
 	public void setD(DischargeDocument d) {
 		this.d = d;
