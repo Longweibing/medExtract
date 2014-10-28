@@ -97,7 +97,6 @@ public class MerkiIntegration {
 			
 			//MERKI outputs results as an XML document, and this reads that output as a string
 			String xmlString=FileUtils.readStream(stream);
-			System.out.println(xmlString);
 			//write the XML to our temp file for parsing
 			FileUtils.writeFile(xmlString, tempFile);
 			

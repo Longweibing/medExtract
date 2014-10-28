@@ -144,7 +144,7 @@ public class MedexResultsParser {
 				for (DrugEntry e : drugsInLine) {
 					e.setStartIndex(Math.min(e.getStartIndex(), i[0]));
 					e.setEndIndex(Math.max(e.getEndIndex(), i[1]));
-					e.setFreq(docText.substring(i[0],i[1]));
+					e.setDuration(docText.substring(i[0],i[1]));
 
 				}
 			}
