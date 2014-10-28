@@ -86,6 +86,7 @@ public class DischargeDocument {
 		this.text = text;
 	}
 	
+	
 /**
  * Given an absolute index in characters, returns the 0-indexed row that character is in. 
  * Basically just counts the number of newlines that occurs before the given index

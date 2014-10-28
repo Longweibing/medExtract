@@ -29,6 +29,12 @@ public class DrugEntry {
 	private int startIndex;
 	private int endIndex;
 	
+	
+	
+	
+	//these are specific indices, which may or may not be set at any point. End
+	//can be calculated from start+length
+	private Integer dosageStartIndex=null;
 	public DrugEntry() {
 		
 	}
@@ -168,8 +174,17 @@ public class DrugEntry {
 	
 	//returns the absolute index of this drug
 	public int getDrugIndex() {
-		return getDocument().getText().substring(startIndex,endIndex+1).indexOf(name)+startIndex;
+		return this.getIndexOfString(this.getName());
 
+	}
+	public int getDosageIndex() {
+		if (dosage.equals("nm")) {
+			return -1;
+		}
+		if (dosageStartIndex!=null) {
+			return dosageStartIndex;
+		}
+		return getIndexOfString(this.getDosage());
 	}
 	
 	public String getModeOffset() {
@@ -190,7 +205,13 @@ public class DrugEntry {
 		if (getDosage().equals("nm")) {
 			return ""; //no offset
 		}
-		return getOffsetOfString(getDosage());
+		
+		//if we don't know exactly where it starts, just search in the context
+		if (dosageStartIndex==null) {
+			return getOffsetOfString(getDosage());
+
+		}
+		return getOffsetOfIndex(dosageStartIndex,dosageStartIndex+this.getDosage().length()-1);
 	}
 	public String getDurationOffset() {
 		if (getDuration().equals("nm")) {
@@ -199,21 +220,29 @@ public class DrugEntry {
 		return getOffsetOfString(getDuration());
 	}
 	
+	public int getIndexOfString(String str) {
+		return getDocument().getText().substring(startIndex,endIndex+1).indexOf(str)+startIndex;
+
+	}
+	
 	public String getReasonOffset() {
 		if (getReason().equals("nm")) {
 			return ""; //no offset
 		}
 		return getOffsetOfString(getReason());
 	}
-	
-	public String getOffsetOfString(String str) {
-		int index=getDocument().getText().substring(startIndex,endIndex+1).indexOf(str)+startIndex;
-		int endIndex=index+(str.length()-1);
-		int row1=getDocument().getRowOfIndex(index);
-		int token1=getDocument().getTokenOfIndex(index);
-		int row2=getDocument().getRowOfIndex(endIndex);
-		int token2=getDocument().getTokenOfIndex(endIndex);
+	private String getOffsetOfIndex(int start, int end) {
+		int row1=getDocument().getRowOfIndex(start);
+		int token1=getDocument().getTokenOfIndex(start);
+		int row2=getDocument().getRowOfIndex(end);
+		int token2=getDocument().getTokenOfIndex(end);
 		return " "+getFormattedOffset(row1,token1) + " "+getFormattedOffset(row2,token2);
+	}
+	public String getOffsetOfString(String str) {
+		int index=getIndexOfString(str);
+		int endIndex=index+(str.length()-1);
+		return getOffsetOfIndex(index,endIndex);
+		
 	}
 	public DischargeDocument getDocument() {
 		return d;
@@ -228,6 +257,12 @@ public class DrugEntry {
 	}
 	public void setD(DischargeDocument d) {
 		this.d = d;
+	}
+	public Integer getDosageStartIndex() {
+		return dosageStartIndex;
+	}
+	public void setDosageStartIndex(Integer dosageStartIndex) {
+		this.dosageStartIndex = dosageStartIndex;
 	}
 	
 }
