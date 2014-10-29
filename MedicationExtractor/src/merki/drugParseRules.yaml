@@ -20,7 +20,9 @@ nonTerminals:
         - writtenNumber ?- ?writtenNumber
     - name: howLong
       patterns:
-        - '(x|for)\s*(number|writtenNumber|numberRange)\s*period'
+        - '(x|for)\s*(number|writtenNumber|numberRange)\s*(period)(\s+courseterms)?'
+        - '(x|for)\s*(number|writtenNumber|numberRange)\s*dosageterms(\s+courseterms)?'
+        
     - name: simpleFreq
       patterns:
         - 'every\s*period'                            # q. day
@@ -111,7 +113,8 @@ terminals:
     of:                 [of]        # literal for dose of
     to:                 [to]        # literal
     x:                  [x]        # literal
-    for:                 [for]        # literal
+    for: [for]        # literal
+    dosageterms:   [doses,dose,tablets]
 
     manner:             [po, iv, drip, sl, npo, pgt, png, pnj, pr, top, trans, sc, sq, subcutaneous, subq, subcut, 
                          im, intramuscular, inh, inhaler, neb, nebulizer, patch, td, transdermal]
@@ -120,9 +123,10 @@ terminals:
 
     eachTimeOfDay:      [qam, q am, qpm, q pm, qhs]
     timeOfDay:          [hs, at bedtime, stat, ac, before meals, ap, before dinner, pc, after meals, am, morning, pm, evening, afternoon]
-    period:             [hour, hr, h, day, d, week, wk, w, month, mo, year, yr]
+    period:             [hour, hr, h, day, d, week, wk, w, month, mo, year, yr, hours, hrs, days, weeks, months, years]
     periodAdj:          [hourly, daily, weekly, monthly, yearly]
-
+    daysOfWeek:         [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+    courseterms: 		[course, total course, courses]
     cond:               [ud, ut dict, prm-breakthrough, '(were|was) held', discontinued, "dc'd"]
     asNeeded:           [prn, as needed]
     #qualifier:          ['(for)?\s*(severe)?\s*pain']

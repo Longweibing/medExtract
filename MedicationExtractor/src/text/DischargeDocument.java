@@ -21,8 +21,9 @@ import main.FileUtils;
 public class DischargeDocument {
 	private String text;
 	private List<Section> sections; //an ORDERED list of sections in this document
-	
+	private String fileName;
 	private List<DrugEntry> drugEntries;
+	private boolean favorDurations;
 	//TODO: Need to be able to find the row/ column given a simple index
 	
 	
@@ -66,6 +67,7 @@ public class DischargeDocument {
 	 */
 	public DischargeDocument (File f) {
 		this(FileUtils.readFile(f));
+		fileName=f.getName();
 	}
 	
 	/**
@@ -222,6 +224,18 @@ public class DischargeDocument {
 			endIndex=text.length();
 		}
 		return text.substring(startIndex,endIndex);
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public boolean isFavorDurations() {
+		return favorDurations;
+	}
+
+	public void setFavorDurations(boolean favorDurations) {
+		this.favorDurations = favorDurations;
 	}
 
 }

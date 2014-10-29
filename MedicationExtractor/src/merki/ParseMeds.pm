@@ -32,7 +32,7 @@ sub twoLevelParse { # takes text, parses out drug info, and then also parses out
     my $self = shift;
     my $text = shift;
     my $topLevel = shift;       # arrayref of tokens to parse (drug, possibleDrug, context)
-    my $secondLevel = shift;    # arrayref of subtokens to parse (dose, freq, route, prn)
+    my $secondLevel = shift;    # arrayref of subtokens to parse (dose, freq, route, prn, howLong)
 
     my $drugs = $self->parse($text, $topLevel);
     $drugs = $self->removeTrumpedTokens($drugs);
@@ -41,7 +41,7 @@ sub twoLevelParse { # takes text, parses out drug info, and then also parses out
     #print STDERR scalar(@$drugs), ": ",Dumper($drugs) if scalar @$drugs;
     for my $drug (@$drugs) {
         my $parts = $self->parse($drug->{text}, $secondLevel);
-        $parts = $self->removePartialParts($parts);
+        #$parts = $self->removePartialParts($parts);
         map { $drug->{ $_->{type} } = $_->{text} } @$parts;
         $drug->{parts} = $parts if defined $parts and @$parts;
         if( $drug->{type} eq 'possibleDrug' ) {
@@ -79,6 +79,8 @@ sub drugsToXML {
         if( defined $drug->{dose} ) { $W->startTag("dose"); $W->characters( $drug->{dose} ); $W->endTag("dose"); }
         if( defined $drug->{route} ) { $W->startTag("route"); $W->characters( $drug->{route} ); $W->endTag("route"); }
         if( defined $drug->{freq} ) { $W->startTag("freq"); $W->characters( $drug->{freq} ); $W->endTag("freq"); }
+        if( defined $drug->{howLong} ) { $W->startTag("howLong"); $W->characters( $drug->{howLong} ); $W->endTag("howLong"); }
+        
         if( defined $drug->{prn} ) { $W->startTag("prn"); $W->characters( $drug->{prn} ); $W->endTag("prn"); }
         if( defined $drug->{date} ) { $W->startTag("date"); $W->characters( $drug->{date} ); $W->endTag("date"); }
         if( defined $drug->{start} ) { $W->startTag("startChar"); $W->characters( $drug->{start} ); $W->endTag("startChar"); }
@@ -94,6 +96,7 @@ sub drugsToXML {
         delete $drug->{route};
         delete $drug->{dose};
         delete $drug->{freq};
+        delete $drug->{howLong};
         delete $drug->{prn};
         delete $drug->{date};
         delete $drug->{context};

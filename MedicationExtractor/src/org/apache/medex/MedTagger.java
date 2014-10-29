@@ -731,8 +731,8 @@ public class MedTagger {
 							// System.out.println("** drugList1_andsig :"+root.drugList1_andsig);
 							// writeLog("enter 2\n");
 							for(int y=0;y<root.drugList1_dgssig.size();y++){
-								writeLog("dgmsig:"+root.drugList1_dgmsig.get(y));
-								writeLog("andsig:"+root.drugList1_andsig.get(y));
+								//writeLog("dgmsig:"+root.drugList1_dgmsig.get(y));
+								//writeLog("andsig:"+root.drugList1_andsig.get(y));
 							}
 							String str_all = "";
 							for (String str : root.drugList1_dgmsig) {

@@ -16,6 +16,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import drugs.DrugEntry;
 import drugs.DrugUtils;
+import filter.BadDrugFilter;
 import filter.FilterManager;
 import medex.MedexResultsParser;
 import medxn.MedXNParser;
@@ -56,60 +57,87 @@ public class Main {
 	private static void getResults(File inputDirectory, File outputDirectory) throws IOException, ResourceInitializationException {
 		//reads in section lexicons and stores them in memory for the duration of the execution
 		
-		MedXNParser.runMedXN();
-
-		
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
+		BadDrugFilter.compileBadDrugList(getResource("/resources/badDrugs.txt"));
+		
 		File goldStandard=getResource("/resources/StudentData/goldStandards/gold.xml");
-		File records=getResource("/resources/StudentData/studentTrainingFiles");
 		File medexOutput=new File(outputDirectory, "medex");
 		File finalOutput=new File(outputDirectory, "results");
+		
+		HashSet<String> drugNames=new HashSet<String>();
+		File medXNOutput=new File(outputDirectory,"cpe/output.out");
+		
 		finalOutput.mkdirs();
 		medexOutput.mkdirs();
 		FilterManager.loadFilters();
 		i2b2Integration i2b2=new i2b2Integration(getResource("/i2b2").getAbsolutePath(),
-				goldStandard.getAbsolutePath(),records.getAbsolutePath(), finalOutput.getAbsolutePath());
+				goldStandard.getAbsolutePath(),inputDirectory.getAbsolutePath(), finalOutput.getAbsolutePath());
 		
 		MerkiIntegration i=new MerkiIntegration(getResource("/merki").getAbsolutePath()); 
 		
 
 		//step one above
-		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
-		m.run_batch_medtag();
+		//MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
+		//m.run_batch_medtag();
 		
 		//store all documents so we can output them at the end
 		List<DischargeDocument> docs=new ArrayList<DischargeDocument>();
 		for (File f : inputDirectory.listFiles()) {
+			if (!f.getName().equals("379569")) {
+				//continue;
+			}
+			System.out.println("working on " +f.getName());
+
 			DischargeDocument text=new DischargeDocument(f);
+			DischargeDocument text2=new DischargeDocument(f);
+			DischargeDocument text3=new DischargeDocument(f);
+			text3.setFavorDurations(true);
 			docs.add(text);
 			
 			//part b above
-			System.out.println("parsing MedEx results");
+			//System.out.println("parsing MedEx results");
 			MedexResultsParser.parseMedexResults(text, new File(medexOutput,f.getName()));
 			//part c above. Adds all drugs MERKI can find to this element
-			System.out.println("running MERKI");
-			//i.runMerki(text);
+			//System.out.println("running MERKI");
+			i.runMerki(text3);
 			
+			//System.out.println("parsing MedXN results");
+			//trying to make MedXN supplementary only
+			MedXNParser.parseMedXNResults(text2, medXNOutput);
+			
+			DrugUtils.mergeDrugsInDocuments(text, text2);
+			DrugUtils.mergeDrugsInDocuments(text,text3);
 			//filter out duplicates
-			System.out.println("filtering out duplicates");
-			//DrugUtils.filterDuplicateDrugs(text);
-			//TODO: Down here, we will want a function that takes a DischargeDocument that 
-			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
+			//System.out.println("filtering out duplicates");
+			DrugUtils.filterDuplicateDrugs(text);
+			
+			StringBuilder sb=new StringBuilder();
+			for (DrugEntry e: text.getDrugEntries()) {
+				sb.append(text.getSurroundingText(e.getStartIndex(), 100));
+				sb.append("\n");
+			}
 			
 			
 			//step f above. New filters can be defined in the filter package
-			System.out.println("filtering out false positives");
+			//System.out.println("filtering out false positives");
 			FilterManager.runAllFilters(text);
 			
-			System.out.println("printing out results");
-			System.out.println(f.getName());
+			//System.out.println("printing out results");
 			
 			File outputFile=new File(finalOutput,(f.getName().replace(".txt", ""))+".i2b2.entries");
+			
+			for (DrugEntry e : text.getDrugEntries()) {
+				drugNames.add(e.getName().toLowerCase().trim().replace("\n", " "));
+			}
 			
 			FileUtils.writeFile(text.getDrugData(), outputFile);
 			
 			
 			
+		}
+		
+		for (String s : drugNames) {
+			//System.out.println(s);
 		}
 		
 		i2b2.printResults();
@@ -118,7 +146,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws IOException, ResourceInitializationException {
-		getResults(getResource("/resources/StudentData/studentTrainingFiles"), 
+		getResults(getResource("/resources/StudentData/StudentTrainingFiles"), 
 				new File(getResource("/resources/StudentData"),"output"));
 		/*
 		//just some test code running merki on a file

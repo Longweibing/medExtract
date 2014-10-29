@@ -82,6 +82,7 @@ public class MerkiIntegration {
 		//TODO: Might want to choose a better location for this temp file
 		
 		File tempFile=new File(installDir,"fakefile.tmp"); 
+		//System.out.println(installDir);
 		try {
 			
 			//next set of lines just runs MERKI from the command line
@@ -89,14 +90,17 @@ public class MerkiIntegration {
 			
 			String[] args=new String[3];
 			args[0]="perl";
+			
 			args[1]=new File(installDir,"parseFromShell.pl").getAbsolutePath();
 			FileUtils.writeFile(text, tempFile);
 			args[2]=tempFile.getAbsolutePath();
 			Process p = rt.exec(args,null,new File(installDir)); //run MERKI
 			InputStream stream=p.getInputStream();
-			
+			//InputStream error=p.getErrorStream();
+			//System.out.println(FileUtils.readStream(error));
 			//MERKI outputs results as an XML document, and this reads that output as a string
 			String xmlString=FileUtils.readStream(stream);
+			//System.out.println(xmlString);
 			//write the XML to our temp file for parsing
 			FileUtils.writeFile(xmlString, tempFile);
 			
@@ -141,6 +145,20 @@ public class MerkiIntegration {
 		e.setDosage(getStringFromChild(element,"dose").trim());
 		e.setFreq(getStringFromChild(element,"freq").trim());
 		e.setMode(getStringFromChild(element,"route").trim());
+		e.setDuration(getStringFromChild(element,"howLong"));
+		
+		
+		String freq=e.getFreq();
+		String duration=e.getDuration();
+		if (!duration.equals("nm")) {
+			System.out.println(duration);
+			if (freq.contains(duration)) {
+				//MERKI tends to give back matching frequencies and durations
+				freq=freq.replace(duration, "");
+				e.setFreq(freq.trim());
+			}
+		}
+		
 		
 		e.setStartIndex(Integer.parseInt(getStringFromChild(element,"startChar")));
 		e.setEndIndex(Integer.parseInt(getStringFromChild(element,"endChar")));
