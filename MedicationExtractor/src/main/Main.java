@@ -20,7 +20,7 @@ import drugs.DrugEntry;
 import drugs.DrugUtils;
 import filter.FilterManager;
 import medex.MedexResultsParser;
-import medxn.MedXNParser;
+//import medxn.MedXNParser;
 import merki.MerkiIntegration;
 import text.DischargeDocument;
 import text.HeaderFinder;
@@ -62,7 +62,7 @@ public class Main {
 	private static void getResults(File inputDirectory, File outputDirectory) throws IOException, ResourceInitializationException {
 		//reads in section lexicons and stores them in memory for the duration of the execution
 		
-		MedXNParser.runMedXN();
+		//MedXNParser.runMedXN();
 
 		
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
@@ -124,7 +124,8 @@ public class Main {
                         //(1)Get the list of drugs
                         List<DrugEntry> drugEntries = text.getDrugEntries();
                         File G = new File(outputDirectory, "metaMapTemp.txt");
-                
+                        StringBuilder str = new StringBuilder();
+                        
                         //(2)Iterate over the list of drugs
                         Iterator<DrugEntry> drugEntIt = drugEntries.iterator();
                         while(drugEntIt.hasNext()){
@@ -132,32 +133,36 @@ public class Main {
                             DrugEntry drugObj = drugEntIt.next();
                             //Get the appropriate surrounding text
                             String reasonTxt = text.getSurroundingText(drugObj.getStartIndex(), 100);
-                            FileUtils.writeFile(reasonTxt, G);
-                            //Set the appropriate field to the text containing th reason
-                            //System.out.println(G.getAbsolutePath());
-                            metaMapObject.setFileField("UpLoad_File", G.getAbsolutePath());
-                            //System.out.println(reasonTxt);
-                            //metaMapObject.setField("APIText", reasonTxt);
-                            //Send this to the metamap web api
-                            try{
+                            str.append(reasonTxt);
+                            str.append("\n");
+                        }//DrugIterator
+                        //(3)Write the med reasons to a file to be uploaded to metamap
+                        FileUtils.writeFile(str.toString(), G);
+                        
+                        //(4)Set the appropriate field to the text containing th reason
+                        metaMapObject.setFileField("UpLoad_File", G.getAbsolutePath());
+                        //(5)Send this to the metamap web api
+                        try{
                                
-                                String results = metaMapObject.handleSubmission();
-                                System.out.print(results);
+                            String results = metaMapObject.handleSubmission();
+                            System.out.print(results);
 
-                             }
-                            catch (RuntimeException ex) {
-                                System.err.println("");
-                                System.err.print("An ERROR has occurred while processing your");
-                                System.err.println(" request, please review any");
-                                System.err.print("lines beginning with \"Error:\" above and the");
-                                System.err.println(" trace below for indications of");
-                                System.err.println("what may have gone wrong.");
-                                System.err.println("");
-                                System.err.println("Trace:");
-                                ex.printStackTrace();
-                            } // catch
-                        }//Drug Iterator
-			
+                         }//try
+                         catch (RuntimeException ex) {
+                             System.err.println("");
+                             System.err.print("An ERROR has occurred while processing your");
+                             System.err.println(" request, please review any");
+                             System.err.print("lines beginning with \"Error:\" above and the");
+                             System.err.println(" trace below for indications of");
+                             System.err.println("what may have gone wrong.");
+                             System.err.println("");
+                             System.err.println("Trace:");
+                             ex.printStackTrace();
+                         } // catch
+			//END STEP (E) -- METAMAP
+                        
+                        
+                        
 			//step f above. New filters can be defined in the filter package
 			System.out.println("filtering out false positives");
 			FilterManager.runAllFilters(text);
