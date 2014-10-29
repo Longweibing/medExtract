@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import org.apache.medex.MedEx;
 import org.apache.medex.MedTagger;
@@ -21,6 +23,10 @@ import merki.MerkiIntegration;
 import text.DischargeDocument;
 import text.HeaderFinder;
 import text.Section;
+//import gov.nih.nlm.nls.skr.*
+import gov.nih.nlm.nls.skr.*;
+import java.util.Iterator;
+
 
 public class Main {
 	public static File getResource(String name) {
@@ -69,10 +75,26 @@ public class Main {
 		//step one above
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
-		
+                
+                //making new 
+		GenericObject metaMapObject = new GenericObject("arcadiaperson", "3kjd83kdBn");
+                metaMapObject.setField("Email_Address", "michael-lash@uiowa.edu");
+                //myGenericObj.setFileField("UpLoad_File", "./sample.txt");
+                metaMapObject.setField("Batch_Command", "metamap -E");
+                //metaMapObject.setField("BatchNotes", "SKR Web API test");
+                metaMapObject.setField("SilentEmail", true);
+                //metaMapObject.setFileField("UpLoad_File", "/Users/fortylashes/Documents/Health_Data_Analytics/Project2/examples/sample.txt");
+                String res = metaMapObject.handleSubmission();
+                System.out.println(res);
+                
+                
 		//store all documents so we can output them at the end
 		List<DischargeDocument> docs=new ArrayList<DischargeDocument>();
 		for (File f : inputDirectory.listFiles()) {
+                        if (f.getName().startsWith(".")) {
+                            continue;
+                        }
+                        System.out.println(f);
 			DischargeDocument text=new DischargeDocument(f);
 			docs.add(text);
 			
@@ -81,7 +103,7 @@ public class Main {
 			MedexResultsParser.parseMedexResults(text, new File(medexOutput,f.getName()));
 			//part c above. Adds all drugs MERKI can find to this element
 			System.out.println("running MERKI");
-			i.runMerki(text);
+			//i.runMerki(text);
 			
 			//filter out duplicates
 			System.out.println("filtering out duplicates");
@@ -89,6 +111,45 @@ public class Main {
 			//TODO: Down here, we will want a function that takes a DischargeDocument that 
 			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
 			
+                        //part e above. Using the define metamap "genericObject" to send a request
+                        //
+                        //
+                        //(1)Get the list of drugs
+                        List<DrugEntry> drugEntries = text.getDrugEntries();
+                        File G = new File(outputDirectory, "metaMapTemp.txt");
+                
+                        //(2)Iterate over the list of drugs
+                        Iterator<DrugEntry> drugEntIt = drugEntries.iterator();
+                        while(drugEntIt.hasNext()){
+                            //Get a handle on the object
+                            DrugEntry drugObj = drugEntIt.next();
+                            //Get the appropriate surrounding text
+                            String reasonTxt = text.getSurroundingText(drugObj.getStartIndex(), 100);
+                            FileUtils.writeFile(reasonTxt, G);
+                            //Set the appropriate field to the text containing th reason
+                            //System.out.println(G.getAbsolutePath());
+                            metaMapObject.setFileField("UpLoad_File", G.getAbsolutePath());
+                            //System.out.println(reasonTxt);
+                            //metaMapObject.setField("APIText", reasonTxt);
+                            //Send this to the metamap web api
+                            try{
+                               
+                                String results = metaMapObject.handleSubmission();
+                                System.out.print(results);
+
+                             }
+                            catch (RuntimeException ex) {
+                                System.err.println("");
+                                System.err.print("An ERROR has occurred while processing your");
+                                System.err.println(" request, please review any");
+                                System.err.print("lines beginning with \"Error:\" above and the");
+                                System.err.println(" trace below for indications of");
+                                System.err.println("what may have gone wrong.");
+                                System.err.println("");
+                                System.err.println("Trace:");
+                                ex.printStackTrace();
+                            } // catch
+                        }//Drug Iterator
 			
 			//step f above. New filters can be defined in the filter package
 			System.out.println("filtering out false positives");
@@ -109,8 +170,8 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws IOException {
-		getResults(new File("c:/users/eric/desktop/studentdata/studenttrainingfiles"), 
-				new File("c:/users/eric/desktop/healthoutput"));
+		getResults(new File("/Users/fortylashes/Documents/Health_Data_Analytics/Project2/StudentData/studentTrainingFiles"), 
+				new File("/Users/fortylashes/Documents/Health_Data_Analytics/Project2/StudentData/studentOutput"));
 		/*
 		//just some test code running merki on a file
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt")); //read the sections.txt file to get a list of sections
