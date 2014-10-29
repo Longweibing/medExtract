@@ -81,6 +81,7 @@ public class Main {
 		
 		MerkiIntegration i=new MerkiIntegration(getResource("/merki").getAbsolutePath()); 
 
+
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
                 
@@ -96,13 +97,14 @@ public class Main {
                 System.out.println(res);
                 
                 
+
 		//store all documents so we can output them at the end
 		List<DischargeDocument> docs=new ArrayList<DischargeDocument>();
 		for (File f : inputDirectory.listFiles()) {
                         if (f.getName().startsWith(".")) {
                             continue;
                         }
-            System.out.println(f);
+                        System.out.println(f);
 
 			DischargeDocument text=new DischargeDocument(f);
 			DischargeDocument text2=new DischargeDocument(f);
