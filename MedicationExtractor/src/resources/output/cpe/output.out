@@ -1,0 +1,387 @@
+11995.txt|Colace::2076::2082|82000|100 mg::2083::2089`12
+units::2113::2121||||b.i.d.::2090::2096|||| Colace 100 mg b.i.d.
+11995.txt|regular insulin::2165::2180|5856|||||||||scale regular insulin scale , Isordil 30 mg t.i.d.
+11995.txt|Isordil::2189::2196|151187|30 mg::2197::2202||||t.i.d.::2203::2209||||scale regular insulin scale , Isordil 30 mg t.i.d.
+11995.txt|Zestril::2212::2219|196472|5 mg::2220::2224||||||||, Zestril 5 mg q
+11995.txt|Lopressor::2231::2240|203344|50 mg::2241::2246||||b.i.d.::2247::2253||||d , Lopressor 50 mg b.i.d.
+11995.txt|Axid::2256::2260|196464|150 mg::2261::2267||||b.i.d.::2268::2274||||, Axid 150 mg b.i.d.
+11995.txt|Ofloxacin::2277::2286|7623|200 mg::2287::2293|||p.o.::2294::2298|||Ofloxacin 200 MG|316400|, Ofloxacin 200 mg
+11995.txt|Ecotrin::2306::2313|202554|225 mg::2314::2320||||q d::2321::2324||||p.o. q 12 , Ecotrin 225 mg q d , Vancomycin 1250 mg q 24.
+11995.txt|Vancomycin::2327::2337|11124|1250 mg::2338::2345||||||||p.o. q 12 , Ecotrin 225 mg q d , Vancomycin 1250 mg q 24.
+11995.txt|codeine::2378::2385|2670|||||||||reports an allergy to codeine and iodine.
+11995.txt|iodine::2390::2396|5933|||||||||reports an allergy to codeine and iodine.
+11995.txt|Heparin::3193::3200|5224|||||||||Heparin until the following morning , at which
+11995.txt|heparin::3503::3510|5224|||||||||received heparin and urokinase in the Intensive Care Unit overnight
+11995.txt|urokinase::3515::3524|11055|||||||||received heparin and urokinase in the Intensive Care Unit overnight
+11995.txt|Heparin::4073::4080|5224|||||||||She had continuation of her Heparin
+11995.txt|Coumadin::4118::4126|202421|||||||||while she was started on a course of Coumadin to reserve patency of
+11995.txt|Vancomycin::4316::4326|11124|1250 mg::4327::4334|||IV::4335::4337|q d::4338::4341|||| Vancomycin 1250 mg IV q d , Ofloxacin 200
+11995.txt|Ofloxacin::4344::4353|7623|200
+mg::4354::4360|||p.o.::4361::4365|b.i.d.::4366::4372|two week::4422::4430|Ofloxacin 200 MG|316400| Vancomycin 1250 mg IV q d , Ofloxacin 200
+11995.txt|Coumadin::4442::4450|202421|10 mg::4508::4513||||in evening::4514::4524||||continue for an additional two week course ) , Coumadin with target
+11995.txt|Percocet::4545::4553|42844||1-2::4554::4557`4::4573::4574|tablets::4558::4565|p.o.::4566::4570|prn::4575::4578||||Additionally , Percocet 1-2 tablets p.o. q 4 prn , Colace 100 mg p.o.
+11995.txt|Colace::4581::4587|82000|100 mg::4588::4594`10 units::4621::4629|||p.o.::4595::4599|b.i.d.::4600::4606`b.i.d.::4636::4642||||Additionally , Percocet 1-2 tablets p.o. q 4 prn , Colace 100 mg p.o.
+11995.txt|Isordil::4679::4686|151187|30 mg::4687::4692||||t.i.d.::4693::4699||||subcu q 4 , Isordil 30 mg t.i.d.
+11995.txt|Zestril::4702::4709|196472|5 mg::4710::4714||||q d::4715::4718||||, Zestril 5 mg q d , Lopressor 50
+11995.txt|Lopressor::4721::4730|203344|50
+mg::4731::4736||||b.i.d.::4737::4743||||, Zestril 5 mg q d , Lopressor 50
+11995.txt|Axid::4746::4750|196464|150 mg::4751::4757|||p.o.::4758::4762|b.i.d.::4763::4769||||, Axid 150 mg p.o. b.i.d.
+133875.txt|Atenolol::2390::2398|1202|12.5 mg::2399::2406||||daily::2407::2412||||Atenolol 12.5 mg daily , aspirin 325 mg daily , metformin 500 mg
+133875.txt|aspirin::2415::2422|1191|325 mg::2423::2429||||daily::2430::2435||Aspirin 325 MG|317300|Atenolol 12.5 mg daily , aspirin 325 mg daily , metformin 500 mg
+133875.txt|metformin::2438::2447|6809|500 mg::2448::2454||||b.i.d.::2455::2461||Metformin 500 MG|316256|Atenolol 12.5 mg daily , aspirin 325 mg daily , metformin 500 mg
+133875.txt|Humalog::2468::2475|135805|12 units::2484::2492||||q.i.d.::2493::2499||||, and Humalog insulin 12 units q.i.d.
+133875.txt|Sodium::2990::2996|9853|||||||||Sodium 140 , potassium 4.0 , chloride of 106 , CO2 27 , BUN of 13 ,
+133875.txt|potassium::3003::3012|8588|||||||||Sodium 140 , potassium 4.0 , chloride of 106 , CO2 27 , BUN of 13 ,
+133875.txt|chloride::3019::3027|153974|||||||||Sodium 140 , potassium 4.0 , chloride of 106 , CO2 27 , BUN of 13 ,
+133875.txt|magnesium::3093::3102|6574|||||||||creatinine 0.8 , glucose 156 , and magnesium 1.9.
+133875.txt|a 25::3363::3367|214903|||||||||with a 25-mm Carpentier-Edwards pericardial valve.
+133875.txt|epinephrine::3667::3678|3992|3 mcg::3658::3663||||||||Intensive Care Unit on 3 mcg of epinephrine and insulin and
+133875.txt|Precedex::3695::3703|262138|||||||||Precedex.
+133875.txt|Lasix::4019::4024|202991|||||||||diuresis with a Lasix drip.
+133875.txt|ciprofloxacin::4352::4365|2551|||||||||was started on ciprofloxacin for a total of five days.
+133875.txt|Lasix::4526::4531|202991|||||||||intravenous Lasix but had weaned Lasix drip and had intermittent
+133875.txt|Lasix::4547::4552|202991|40 mg::4590::4595|||IV::4596::4598|||||intravenous Lasix but had weaned Lasix drip and had intermittent
+133875.txt|sodium::4814::4820|9853|||||||||Are as follows sodium 139 , potassium 4.0 , chloride of 102 , CO2 of
+133875.txt|potassium::4827::4836|8588|||||||||Are as follows sodium 139 , potassium 4.0 , chloride of 102 , CO2 of
+133875.txt|chloride::4843::4851|153974|||||||||Are as follows sodium 139 , potassium 4.0 , chloride of 102 , CO2 of
+133875.txt|magnesium::4913::4922|6574|||||||||30 , BUN 15 , creatinine 0.8 , glucose 163 , magnesium 1.8 , WBC 9.52 ,
+133875.txt|Ciprofloxacin::5065::5078|2551|500 mg::5079::5085||||q.6h::5086::5090||Ciprofloxacin 500 MG|328287|Are as follows: Ciprofloxacin 500 mg q.6h.
+133875.txt|aspirin::5124::5131|1191|81 mg::5132::5137||||daily::5138::5143||Aspirin 81 MG|315431|doses , baby aspirin 81 mg daily , Lasix 40 mg b.i.d.
+133875.txt|Lasix::5146::5151|202991|40 mg::5152::5157||||b.i.d.::5158::5164|three
+days::5171::5181|||doses , baby aspirin 81 mg daily , Lasix 40 mg b.i.d.
+133875.txt|potassium chloride::5193::5211|8591|20 mEq::5225::5231||||b.i.d.::5232::5238|three days::5243::5253|Potassium Chloride 20 MEQ|316547|days along with potassium chloride slow release 20 mEq b.i.d. for
+133875.txt|Motrin::5256::5262|202488|400 mg::5263::5269||||q.8h::5270::5274`p.r.n.::5276::5282||||three days , Motrin 400 mg q.8h.
+133875.txt|NovoLog::5290::5297|284810|24 units::5298::5306||||||||pain , NovoLog 24 units
+133875.txt|Lantus::5321::5327|261551|60 units::5328::5336||||||||, Lantus 60 units subcutaneous q.10 p.m. , Toprol-XL
+133875.txt|Toprol-XL::5362::5371|220348|300 mg::5372::5378||||daily::5379::5384||||, Lantus 60 units subcutaneous q.10 p.m. , Toprol-XL
+133875.txt|NovoLog::5418::5425|284810|||||||||300 mg daily , patient was also discharged on NovoLog sliding
+150406.txt|nitroglycerin::562::575|4917|||||||||She treated this at home with sublingual nitroglycerin with
+150406.txt|nitroglycerin::707::720|4917|||||||||nitroglycerin.
+150406.txt|heparin::906::913|5224|||||||||heparin was started despite the fact that she had negative cardiac
+150406.txt|Glucophage::1386::1396|151827||||||||| Glucophage , Lipitor , atenolol , aspirin , sublingual
+150406.txt|Lipitor::1399::1406|153165||||||||| Glucophage , Lipitor , atenolol , aspirin , sublingual
+150406.txt|atenolol::1409::1417|1202||||||||| Glucophage , Lipitor , atenolol , aspirin , sublingual
+150406.txt|aspirin::1420::1427|1191||||||||| Glucophage , Lipitor , atenolol , aspirin , sublingual
+150406.txt|nitroglycerin::1441::1454|4917|||||p.r.n.::1455::1461||||nitroglycerin p.r.n.
+150406.txt|Zestril::1464::1471|196472|||||||||, Zestril , Celexa , Klonopin ,
+150406.txt|Celexa::1474::1480|215928|||||||||, Zestril , Celexa , Klonopin ,
+150406.txt|Klonopin::1483::1491|202585|||||||||, Zestril , Celexa , Klonopin ,
+150406.txt|Neurontin::1494::1503|196498|||||||||Neurontin.
+150406.txt|Lovenox::2697::2704|225036|1 mg::2705::2709|||subcutaneously::2717::2731|b.i.d.::2732::2738||||started on Lovenox 1 mg per kg subcutaneously b.i.d.
+150406.txt|aspirin::3492::3499|1191|||||||||She was maintained on aspirin ,
+150406.txt|Zocor::3502::3507|196503|||||||||Zocor , Lopressor , captopril , Celexa , Klonopin which are her home
+150406.txt|Lopressor::3510::3519|203344|||||||||Zocor , Lopressor , captopril , Celexa , Klonopin which are her home
+150406.txt|captopril::3522::3531|1998|||||||||Zocor , Lopressor , captopril , Celexa , Klonopin which are her home
+150406.txt|Celexa::3534::3540|215928|||||||||Zocor , Lopressor , captopril , Celexa , Klonopin which are her home
+150406.txt|Klonopin::3543::3551|202585|||||||||Zocor , Lopressor , captopril , Celexa , Klonopin which are her home
+150406.txt|nitroglycerin::3728::3741|4917|||||||||relieved with sublingual nitroglycerin.
+150406.txt|Lovenox::4147::4154|225036|||||||||Lovenox at that time.
+150406.txt|aspirin::4200::4207|1191|||||||||However , she was continued on aspirin and
+150406.txt|Plavix::4212::4218|174742|||||||||Plavix.
+150406.txt|Lovenox::4234::4241|225036|||||||||The patient's Lovenox was reversed with protamine.
+150406.txt|protamine::4260::4269|8826|||||||||The patient's Lovenox was reversed with protamine.
+150406.txt|Plavix::5231::5237|174742|||||||||agents including both Plavix and aspirin were discontinued.
+150406.txt|aspirin::5242::5249|1191|||||||||agents including both Plavix and aspirin were discontinued.
+150406.txt|Lovenox::5912::5919|225036|||||||||anticoagulation with Lovenox , Plavix , aspirin and possible STONDE MEDICAL CENTER
+150406.txt|Plavix::5922::5928|174742|||||||||anticoagulation with Lovenox , Plavix , aspirin and possible STONDE MEDICAL CENTER
+150406.txt|aspirin::5931::5938|1191|||||||||anticoagulation with Lovenox , Plavix , aspirin and possible STONDE MEDICAL CENTER
+150406.txt|Factor XIII::6146::6157|4271|||||||||recommendations were von Willebrand screen as well as a Factor XIII
+150406.txt|Factor XIII::6170::6181|4271|||||||||The Factor XIII screen eventually turned out normal and
+150406.txt|aspirin::6504::6511|1191|||||||||was restarted on aspirin on November , 2003.
+150406.txt|aspirin::6606::6613|1191|||||||||onward , the patient did quite well and was maintained on aspirin ,
+150406.txt|Zocor::6631::6636|196503|||||||||beta-blocker , Zocor and ACE inhibitor.
+150406.txt|Tylenol::7028::7035|202433|||||||||Her headaches are usually not responsive to Tylenol or other
+150406.txt|Tylenol::7265::7272|202433|||||||||Her headache was treated with Tylenol to which it did not respond
+150406.txt|Percocet::7316::7324|42844|||||||||and later with Percocet to which she got some relief.
+150406.txt|Aspirin::7378::7385|1191|81 mg::7386::7391|||p.o.::7392::7396|q day::7397::7402||Aspirin 81 MG|315431| Aspirin 81 mg p.o. q day , Klonopin 0.5 mg
+150406.txt|Klonopin::7405::7413|202585|0.5 mg::7414::7420||||t.i.d.::7421::7427|||| Aspirin 81 mg p.o. q day , Klonopin 0.5 mg
+150406.txt|glucophage::7430::7440|151827|500 mg::7441::7447||||b.i.d.::7448::7454||||, glucophage 500 mg b.i.d.
+150406.txt|Celexa::7457::7463|215928|40 mg::7464::7469|||p.o.::7470::7474|q.d.::7475::7479||||, Celexa
+150406.txt|Zestril::7482::7489|196472|2.5 mg::7490::7496||||q.d.::7497::7501||||, Zestril 2.5 mg q.d.
+150406.txt|atenolol::7504::7512|1202|25 mg::7513::7518|||p.o.::7519::7523|q.d.::7524::7528||Atenolol 25 MG|315437|, atenolol 25 mg p.o. q.d.
+150406.txt|Lipitor::7531::7538|153165|20 mg::7539::7544|||p.o.::7545::7549|q.h.s.::7550::7556||||Lipitor 20 mg p.o. q.h.s.
+180195.txt|vancomycin::798::808|11124|||||||||dose of vancomycin.
+180195.txt|Colace::2855::2861|82000|100 mg::2862::2868||||b.i.d.::2869::2875|||| Colace 100 mg b.i.d.
+180195.txt|folate::2878::2884|62356|1 mg::2885::2889|||p.o.::2890::2894|daily::2895::2900||||, folate 1 mg p.o. daily ,
+180195.txt|gemfibrozil::2903::2914|4719|600 mg::2915::2921||||b.i.d.::2922::2928||Gemfibrozil 600 MG|317636|gemfibrozil 600 mg b.i.d.
+180195.txt|Lantus::2931::2937|261551|30 mg::2938::2943||||q.p.m.::2950::2956||||, Lantus 30 mg subcu q.p.m. , Lipitor 80
+180195.txt|Lipitor::2959::2966|153165|80
+mg::2967::2972||||nightly::2973::2980||||, Lantus 30 mg subcu q.p.m. , Lipitor 80
+180195.txt|Nephrocaps::2983::2993|1087620|||||||||mg nightly , Nephrocaps , Neurontin 300 mg daily , PhosLo 2001 mg
+180195.txt|Neurontin::2996::3005|196498|300 mg::3006::3012||||daily::3013::3018||||mg nightly , Nephrocaps , Neurontin 300 mg daily , PhosLo 2001 mg
+180195.txt|PhosLo::3021::3027|219236|2001 mg::3028::3035||||t.i.d.::3036::3042||||mg nightly , Nephrocaps , Neurontin 300 mg daily , PhosLo 2001 mg
+180195.txt|Protonix::3045::3053|261624|40 mg::3054::3059||||daily::3060::3065||||, Protonix 40 mg daily , Renagel 3200 mg t.i.d.
+180195.txt|Renagel::3068::3075|135118|3200 mg::3076::3083||||t.i.d.::3084::3090||||, Protonix 40 mg daily , Renagel 3200 mg t.i.d.
+180195.txt|Requip::3093::3099|152951|2 mg::3100::3104|||p.o.::3105::3109|b.i.d.::3110::3116||||, Requip 2 mg
+180195.txt|Coumadin::3119::3127|202421|||||||||, Coumadin
+180195.txt|Vancomycin::4677::4687|11124|||||||||erythema , Mr. Bock was started on Vancomycin and Unasyn in the
+180195.txt|Unasyn::4692::4698|57773|||||||||erythema , Mr. Bock was started on Vancomycin and Unasyn in the
+180195.txt|Unasyn::5172::5178|57773|||||||||somewhat improved , his Unasyn was discontinued on HD 3 and he was
+180195.txt|Augmentin::5226::5235|151392|||||||||started on Augmentin and his Vancomycin was continued given his
+180195.txt|Vancomycin::5244::5254|11124|||||||||started on Augmentin and his Vancomycin was continued given his
+180195.txt|Levofloxacin::5827::5839|82122||||IV::5824::5826`IV::5844::5846|||||disease was consulted and he was started on IV Levofloxacin and
+180195.txt|Flagyl::5847::5853|202866|||||||||IV Flagyl to cover gram negatives and anaerobes respectively and
+180195.txt|vancomycin::5913::5923|11124|||||||||his vancomycin continued to be dosed for level less than 20.
+180195.txt|coumadin::7443::7451|202421|||||||||3 ) Heme-Mr Vaeth was on coumadin as an outpatient.
+180195.txt|Coumadin::7752::7760|202421|||||||||that he should remain on Coumadin.
+180195.txt|coumadin::7766::7774|202421|||||||||His coumadin was held prior to
+180195.txt|heparin::7832::7839|5224|||||||||going to the OR and he was placed on a heparin drip.
+180195.txt|coumadin::7850::7858|202421|||||||||His coumadin
+180195.txt|heparin::7911::7918|5224|||||||||was restarted after his BKA and he was bridged with heparin with
+180195.txt|heparin::7989::7996|5224|2100 to 1950units::8021::8038||||||||heparin drip was decreased from 2100 to 1950units per hours.
+180195.txt|heparin::8220::8227|5224|||||every 2-3 days::8332::8346||||His heparin drip
+180195.txt|levofloxacin::8367::8379|82122|||||||||of levofloxacin.
+180195.txt|gemfibrozil::8413::8424|4719|600mg::8425::8430||||bid::8431::8434||Gemfibrozil 600 MG|317636|Ischemia-Mr Grana was on gemfibrozil 600mg bid and lipitor 80mg
+180195.txt|lipitor::8439::8446|153165|80mg::8447::8451||||||||Ischemia-Mr Grana was on gemfibrozil 600mg bid and lipitor 80mg
+180195.txt|TG::8508::8510|10485|||||||||His lipid panel was checked: TC 140 , TG 151 ,
+180195.txt|gemfibrozil::8603::8614|4719|||||||||rhabdomylosis on high dose gemfibrozil and lipitor , his lipitor
+180195.txt|lipitor::8619::8626|153165|||||||||rhabdomylosis on high dose gemfibrozil and lipitor , his lipitor
+180195.txt|lipitor::8633::8640|153165|20mg::8658::8662||||||||rhabdomylosis on high dose gemfibrozil and lipitor , his lipitor
+180195.txt|aspirin::8840::8847|1191|||||||||is not on aspirin given that he has had b/l vitrectomies and his
+180195.txt|lisinopril::9095::9105|29046|5mg::9130::9133||||||Lisinopril 5 MG|316156|He was started on lisinopril which was
+180195.txt|lopressor::9143::9152|203344|||||||||uptitrated to 5mg and also lopressor.
+180195.txt|lantus::9494::9500|261551|||||||||secondary to his infection and his lantus was uptitrated.
+180195.txt|Lantus::9604::9610|261551|||||with meals::9629::9639||||home dose of Lantus as well as Aspart with meals.
+180195.txt|ketamine::9921::9929|6130|||||||||consulted and he was initially placed on a ketamine drip and
+180195.txt|Fentanyl::9939::9947|4337|||||||||Fentanyl PCA.
+180195.txt|fentanyl::9957::9965|4337|||||||||His fentanyl PCA and ketamine drip were
+180195.txt|ketamine::9974::9982|6130|||||||||His fentanyl PCA and ketamine drip were
+180195.txt|oxycontin::10028::10037|218986|80mg::10038::10042||||tid::10043::10046||||discontinued and he was started on oxycontin 80mg tid with
+180195.txt|oxycodone::10052::10061|7804|||||||||oxycodone for breakthrough pain.
+180195.txt|Lyrica::10108::10114|593441|||||||||He was also started on Lyrica
+180195.txt|Ativan::10492::10498|202479|||||||||service was consulted who recommended low dose Ativan prior to
+180195.txt|NAD::10593::10596|1044975|95%::10652::10655|||||||| pleasant , well appearing gentleman , in NAD
+180195.txt|heparin::11183::11190|5224|||||||||can d/c heparin once INR therapeutic at
+180195.txt|levofloxacin::11262::11274|82122|||||||||-daily INR until stable at goal 2-3 off of levofloxacin; will
+180195.txt|coumadin::11304::11312|202421|||||as needed::11347::11356||||likely need to titrate coumadin
+182909.txt|amiodarone::1085::1095|703|||||||||treatment with amiodarone.
+182909.txt|amiodarone::1153::1163|703|||||||||hyperthyroidism secondary to amiodarone , treated with PTU , then
+182909.txt|PTU::1179::1182|8794|||||||||hyperthyroidism secondary to amiodarone , treated with PTU , then
+182909.txt|Levothyroxine::1230::1243|10582|||||||||developed hypothyroidism , treated with Levothyroxine.
+182909.txt|caffeine::1816::1824|1886|||||||||No recent excess caffeine or
+182909.txt|morphine::2196::2204|7052||||||||| The patient has a known allergy to morphine and to
+182909.txt|tetanus toxoid::2212::2226|91607|||||||||tetanus toxoid.
+182909.txt|Sodium::3138::3144|9853|||||||||ADMISSION LABORATORY STUDIES: Sodium 141 , potassium 4.4 ,
+182909.txt|potassium::3151::3160|8588|||||||||ADMISSION LABORATORY STUDIES: Sodium 141 , potassium 4.4 ,
+182909.txt|chloride::3167::3175|153974|||||||||chloride 101 , bicarb 34 , BUN 19 ,
+182909.txt|bicarb::3182::3188|36676|||||||||chloride 101 , bicarb 34 , BUN 19 ,
+182909.txt|calcium::3274::3281|1895|||||||||calcium 9.8 , total protein 7.1 , albumin 4.4 , magnesium 1.9 , CK 477 ,
+182909.txt|albumin::3308::3315|433|||||||||calcium 9.8 , total protein 7.1 , albumin 4.4 , magnesium 1.9 , CK 477 ,
+182909.txt|magnesium::3322::3331|6574|||||||||calcium 9.8 , total protein 7.1 , albumin 4.4 , magnesium 1.9 , CK 477 ,
+182909.txt|Digoxin::4126::4133|3407|0.5 mg::4169::4175`0.25 mg::4183::4190||||||Digoxin 0.5 MG|317357|Because of his rapid ventricular response , Digoxin was started with
+182909.txt|Digoxin::4261::4268|3407|0.125 mg::4272::4280|||p.o.::4281::4285|q. day::4286::4292||Digoxin 0.125 MG|315819|patient was then on a maintenance dose of Digoxin at 0.125 mg p.o.
+182909.txt|Digoxin::4303::4310|3407|||||||||q. day , and his Digoxin level has been maintained around 0.9.
+182909.txt|amiodarone::4376::4386|703|400 mg::4409::4415||||||||his rate control , the amiodarone was also increased to 400 mg q.
+182909.txt|heparin::4477::4484|5224|||||||||day , and the patient was started on anticoagulation with heparin.
+182909.txt|Coumadin::5092::5100|202421|||||||||The patient was loaded with Coumadin and meanwhile
+182909.txt|heparin::5118::5125|5224|||||||||on heparin until INR between 2-3.
+182909.txt|iron::5199::5203|90176|||||||||For further investigation of his cardiomyopathy , iron studies were
+182909.txt|Amiodarone::5469::5479|703|400 mg::5480::5486|||p.o.::5487::5491|q.d.::5492::5496|||| Amiodarone 400 mg p.o. q.d.
+182909.txt|Captopril::5499::5508|1998|25 mg::5509::5514|||p.o.::5515::5519|t.i.d.::5520::5526||Captopril 25 MG|315561|, Captopril
+182909.txt|clonazepam::5529::5539|2598|1 mg::5540::5544|||p.o.::5545::5549|q. h::5550::5554||Clonazepam 1 MG|315700|, clonazepam 1 mg p.o.
+182909.txt|Klonopin::5560::5568|202585|0.5 mg::5569::5575|||p.o.::5576::5580|||||, Klonopin 0.5 mg p.o. q. a.m. , Digoxin 0.125 mg p.o. q.d.
+182909.txt|Digoxin::5591::5598|3407|0.125 mg::5599::5607|||p.o.::5608::5612|q.d.::5613::5617||Digoxin 0.125 MG|315819|, Klonopin 0.5 mg p.o. q. a.m. , Digoxin 0.125 mg p.o. q.d.
+182909.txt|Lasix::5620::5625|202991|80 mg::5626::5631|||p.o.::5632::5636|b.i.d.::5637::5643||||Lasix 80 mg p.o. b.i.d.
+182909.txt|glipizide::5646::5655|4821|5 mg::5656::5660|||p.o.::5661::5665|q.d.::5666::5670||Glipizide 5 MG|315980|, glipizide 5 mg p.o. q.d.
+182909.txt|levothyroxine::5673::5686|10582|||||||||, levothyroxine
+182909.txt|sodium::5687::5693|9853|100 mcg::5694::5701|||p.o.::5702::5706|q.d.::5707::5711||||sodium 100 mcg p.o. q.d.
+182909.txt|magnesium oxide::5714::5729|6582|420 mg::5730::5736|||p.o.::5737::5741|q.d.::5742::5746||Magnesium Oxide 420 MG|332539|, magnesium oxide 420 mg p.o. q.d.
+182909.txt|Lopressor::5749::5758|203344|25 mg::5759::5764|||p.o.::5765::5769|b.i.d.::5770::5776||||Lopressor 25 mg p.o. b.i.d.
+182909.txt|nitroglycerin::5779::5792|4917|0.4 mg::5801::5807|one::5810::5813|tab::5814::5817||||Nitroglycerin 0.4 MG|316365|, nitroglycerin 1/150 ( 0.4 mg ) one tab
+182909.txt|Coumadin::5859::5867|202421|5 mg::5868::5872|||p.o.::5873::5877|q. day::5878::5884||||sublingual q. five minutes times three , Coumadin 5 mg p.o. q. day
+182909.txt|Simvastatin::5984::5995|36567|20 mg::5996::6001|||p.o.::6002::6006|||Simvastatin 20 MG|316673|accordingly to maintain INR between 2-3 , Simvastatin 20 mg p.o. q.
+182909.txt|isosorbide , mononitrate::6017::6041|28004|30 mg::6045::6050`400 mg::6080::6086|||p.o.::6051::6055`p.o.::6087::6091|q.d.::6056::6060`q. day::6092::6098||Isosorbide Mononitrate 30 MG|381047|, isosorbide , mononitrate-SR 30 mg p.o. q.d.
+18563.txt|Ativan::353::359|202479|||||||||agitation on hemodialysis where he received Ativan and continued
+18563.txt|Depakote::551::559|216459|||||||||Depakote , Haldol was reduced to just Monday-Wednesday-Friday 1 mg
+18563.txt|Haldol::562::568|151839|1 mg::613::617`1 mg::642::646||||p.r.n.::647::653||||Depakote , Haldol was reduced to just Monday-Wednesday-Friday 1 mg
+18563.txt|Depakote::715::723|216459|||||||||very well on this regimen and his Depakote level was stable at
+18563.txt|Depakote::787::795|216459|250
+mg::803::809||||b.i.d.::796::802||||The plan is to continue Depakote b.i.d.
+18563.txt|Haldol::815::821|151839|||||p.r.n.::822::828||||mg with Haldol p.r.n. for behavior.
+18563.txt|ceftriaxone::1088::1099|2193||||IV::1100::1102|||||on 0/16/06 and started on ceftriaxone IV and Flagyl.
+18563.txt|Flagyl::1107::1113|202866|||||||||on 0/16/06 and started on ceftriaxone IV and Flagyl.
+18563.txt|cefpodoxime::1135::1146|20489|||||||||changed to cefpodoxime and Flagyl for discharge.
+18563.txt|Flagyl::1151::1157|202866|||||||||changed to cefpodoxime and Flagyl for discharge.
+18563.txt|Lantus::1606::1612|261551|7 units::1595::1602`5 units::1636::1643||||q.a.m.::1613::1619`q.p.m.::1624::1630||||ultimately discontinued on a regimen of 7 units of Lantus q.a.m.
+18563.txt|ceftriaxone::2516::2527|2193|||||||||on antibiotics of ceftriaxone and Flagyl , which was switched to
+18563.txt|Flagyl::2532::2538|202866|||||||||on antibiotics of ceftriaxone and Flagyl , which was switched to
+18563.txt|cefpodoxime::2563::2574|20489|||||||||cefpodoxime and Flagyl for discharge.
+18563.txt|Flagyl::2579::2585|202866|||||||||cefpodoxime and Flagyl for discharge.
+18563.txt|cefpodoxime::2605::2616|20489|||||on Monday::2648::2657||||The cefpodoxime should be
+18563.txt|PhosLo::3145::3151|219236|2001 mg::3152::3159|||p.o.::3160::3164|t.i.d.::3165::3171||||PhosLo 2001 mg p.o. t.i.d.
+18563.txt|Depakote::3174::3182|216459|250 mg::3183::3189|||p.o.::3190::3194|b.i.d.::3195::3201||||, Depakote 250 mg p.o. b.i.d.
+18563.txt|folate::3204::3210|62356|1
+mg::3211::3215|||p.o.::3216::3220|daily::3221::3226||||, folate 1
+18563.txt|Haldol::3229::3235|151839|1 mg::3236::3240|||IV::3241::3243|on Monday::3244::3253||||mg p.o. daily , Haldol 1 mg IV on Monday-Wednesday-Friday given
+18563.txt|labetalol::3301::3310|6185|350 mg::3311::3317|||p.o.::3318::3322|b.i.d.::3323::3329||||prior to hemodialysis , labetalol 350 mg p.o. b.i.d.
+18563.txt|lisinopril::3332::3342|29046|80 mg::3343::3348|||p.o.::3349::3353|daily::3354::3359||||, lisinopril
+18563.txt|Flagyl::3362::3368|202866|500 mg::3369::3375|||p.o.::3376::3380|t.i.d.::3381::3387|14 days::3392::3399|||80 mg p.o. daily , Flagyl 500 mg p.o. t.i.d. for 14 days , thiamine
+18563.txt|thiamine::3402::3410|10454|100 mg::3411::3417|||p.o.::3418::3422|daily::3423::3428||Thiamine 100 MG|317518|80 mg p.o. daily , Flagyl 500 mg p.o. t.i.d. for 14 days , thiamine
+18563.txt|Norvasc::3431::3438|58927|10 mg::3439::3444|||p.o.::3445::3449|daily::3450::3455||||100 mg p.o. daily , Norvasc 10 mg p.o. daily , gabapentin 300 mg
+18563.txt|gabapentin::3458::3468|25480|300 mg::3469::3475|||p.o.::3476::3480|q.h.s.::3481::3487||gabapentin 300 MG|345818|100 mg p.o. daily , Norvasc 10 mg p.o. daily , gabapentin 300 mg
+18563.txt|cefpodoxime::3490::3501|20489|200 mg::3502::3508|||p.o.::3509::3513|three times a week::3514::3532`on
+Monday::3533::3542||cefpodoxime 200 MG|329658|, cefpodoxime 200 mg p.o. three times a week on
+18563.txt|Nephrocaps::3603::3613|1087620||one::3614::3617|tablet::3618::3624|p.o.::3625::3629|daily::3630::3635||||Nephrocaps one tablet p.o. daily , sevelamer 2004 mg p.o. t.i.d.
+18563.txt|sevelamer::3638::3647|214824|2004 mg::3648::3655|||p.o.::3656::3660|t.i.d.::3661::3667||||Nephrocaps one tablet p.o. daily , sevelamer 2004 mg p.o. t.i.d.
+18563.txt|Advair diskus::3670::3683|284649||one::3691::3694|puff::3695::3699||b.i.d.::3700::3706||||Advair diskus 250/50 one puff b.i.d.
+18563.txt|Nexium::3709::3715|284799|20 mg::3716::3721|||p.o.::3722::3726|daily::3727::3732||||, Nexium 20 mg p.o. daily ,
+18563.txt|Lantus::3735::3741|261551|7 units::3742::3749`4 units::3816::3823`5 units::3855::3862||||b.i.d.::3763::3769`in the morning::3775::3789`before dinner::3837::3850||||Lantus 7 units subcutaneous b.i.d.
+18563.txt|albuterol::4146::4155|435|||paste::4161::4166|topical::4167::4174|daily::4175::4180`p.r.n.::4192::4198||||sugar 400-450 give 2 units , albuterol butt paste topical daily ,
+18563.txt|Tylenol::4199::4206|202433|650 mg::4207::4213||||p.r.n.::4214::4220||||Tylenol 650 mg p.r.n.
+18563.txt|albuterol::4256::4265|435|||||p.r.n.::4274::4280||||temperature , albuterol inhaler p.r.n.
+18563.txt|Haldol::4292::4298|151839|1 mg::4299::4303|||IV::4304::4306|p.r.n.::4314::4320||||wheezing , Haldol 1 mg IV q.
+18563.txt|Loperamide::4401::4411|6468|2 mg::4412::4416|||p.o.::4417::4421|q. 8h::4422::4427`p.r.n.::4429::4435||Loperamide 2 MG|329226|Loperamide 2 mg p.o. q. 8h.
+189350.txt|Veltin::302::308|999924||||||||| Ms. Veltin is a 72 year old woman
+189350.txt|Atenolol::2004::2012|1202||50::2013::2015|||b.i.d.::2016::2022|||| Atenolol 50 b.i.d.
+189350.txt|hydrochlorothiazide::2025::2044|5487||25::2045::2047|||q.d.::2048::2052||||, hydrochlorothiazide 25
+189350.txt|Lisinopril::2055::2065|29046||40::2066::2068|||q.d.::2069::2073||||, Lisinopril 40 q.d.
+189350.txt|simvastatin::2076::2087|36567||10::2088::2090|||q.d.::2091::2095||||, simvastatin 10
+189350.txt|metformin::2098::2107|6809||500::2108::2111`43::2127::2129`24::2141::2143|||q.d.::2112::2116`q.a.m.::2130::2136`q.p.m.::2144::2150||||, metformin 500 q.d.
+189350.txt|Penicillin::2162::2172|70618||||||||| Penicillin caused a rash and intravenous contrast dye
+189350.txt|aspirin::3888::3895|1191|||||||||while she was maintained on her aspirin and simvastatin , her blood
+189350.txt|simvastatin::3900::3911|36567|||||||||while she was maintained on her aspirin and simvastatin , her blood
+189350.txt|Atenolol::4004::4012|1202||50::4013::4015|||b.i.d.::4016::4022||||to sixties and Atenolol 50 b.i.d. was added.
+189350.txt|Lisinopril::4058::4068|29046|40 milligrams::4072::4085||||||||of Lisinopril at 40 milligrams so nifedipine extended release was
+189350.txt|nifedipine::4089::4099|7417|120 milligrams::4146::4160||||q.d.::4161::4165||||of Lisinopril at 40 milligrams so nifedipine extended release was
+189350.txt|Lasix::4392::4397|202991||||||seven day::4447::4456|||four liters through admission with Lasix at 40 intravenously and
+189350.txt|Lasix::4467::4472|202991|85%::4563::4566|||p.o.::4479::4483|q.d.::4484::4488|seven day::4447::4456|||would be discharged on a seven day course of Lasix at 20 p.o. q.d.
+189350.txt|metformin::5408::5417|6809||||p.o.::5510::5514|||||4. Endocrine - She was maintained on metformin during admission
+189350.txt|Atenolol::5968::5976|1202||50::5977::5979|||b.i.d.::5980::5986|||| Atenolol 50 b.i.d.
+189350.txt|hydrochlorothiazide::5989::6008|5487||25::6009::6011|||q.d.::6012::6016||||, hydrochlorothiazide 25
+189350.txt|Lisinopril::6019::6029|29046||40::6030::6032|||q.d.::6033::6037||||, Lisinopril 40 q.d.
+189350.txt|nifedipine::6040::6050|7417||120::6068::6071|||q.d.::6072::6076||||, nifedipine
+189350.txt|metformin::6079::6088|6809||500::6089::6092`43::6104::6106`24::6118::6120|||q.d.::6093::6097`q.a.m.::6107::6113`q.p.m.::6121::6127||||, metformin 500 q.d.
+189350.txt|simvastatin::6130::6141|36567||10::6142::6144|||q.d.::6145::6149||||q.p.m. , simvastatin 10 q.d.
+189350.txt|aspirin::6152::6159|1191||325::6160::6163|||q.d.::6164::6168||||, aspirin 325 q.d.
+189350.txt|Lasix::6175::6180|202991|20
+milligrams::6181::6194|||p.o.::6195::6199|q.d.::6200::6204||||, and Lasix 20
+210958.txt|GLYBURIDE::482::491|4815|2.5 MG::492::498|||PO::499::501|QD::502::504||Glyburide 2.5 MG|315989|GLYBURIDE 2.5 MG PO QD HOLD IF: NPO
+210958.txt|LISINOPRIL::518::528|29046|10 MG::529::534|||PO::535::537`PO::679::681|QD::538::540||Lisinopril 10 MG|316151|LISINOPRIL 10 MG PO QD HOLD IF: SBP&lt;95
+210958.txt|LISINOPRIL::734::744|29046|||||||||POTENTIALLY SERIOUS INTERACTION: LISINOPRIL &amp; POTASSIUM
+210958.txt|POTASSIUM::751::760|8588|||||||||POTENTIALLY SERIOUS INTERACTION: LISINOPRIL &amp; POTASSIUM
+210958.txt|CHLORIDE::761::769|153974|||||as needed::791::800||||CHLORIDE Reason for override: as needed
+210958.txt|SARNA::801::806|492513||||TOPICAL::807::814|QD::818::820||||SARNA TOPICAL TP QD
+210958.txt|COUMADIN ( WARFARIN SODIUM ::870::897|202421::114194|5 MG::899::903|||PO::904::906|QPM::907::910||Warfarin Sodium 5 MG [Coumadin]|855333|COUMADIN ( WARFARIN SODIUM ) 5 MG PO QPM
+210958.txt|Vitamin-K::1022::1031|11258|||||||||No high Vitamin-K containing foods
+210958.txt|CIPROFLOXACIN::1145::1158|2551||||PO::1159::1161|||||on order for CIPROFLOXACIN PO ( ref # 87642577 )
+210958.txt|WARFARIN::1214::1222|11289|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; CIPROFLOXACIN
+210958.txt|CIPROFLOXACIN::1229::1242|2551|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; CIPROFLOXACIN
+210958.txt|SIMVASTATIN::1393::1404|36567||||PO::1405::1407|||||on order for SIMVASTATIN PO ( ref # 96793722 )
+210958.txt|WARFARIN::1460::1468|11289|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; SIMVASTATIN
+210958.txt|SIMVASTATIN::1475::1486|36567|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; SIMVASTATIN
+210958.txt|SIMVASTATIN::1525::1536|36567|20 MG::1537::1542|||PO::1543::1545|QHS::1546::1549||Simvastatin 20 MG|316673|SIMVASTATIN 20 MG PO QHS
+210958.txt|WARFARIN::1749::1757|11289|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; SIMVASTATIN
+210958.txt|SIMVASTATIN::1764::1775|36567|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; SIMVASTATIN
+210958.txt|MICONAZOLE NITRATE::1814::1832|42790|2%::1833::1835||POWDER::1836::1842|TOPICAL::1843::1850|BID::1854::1857||||MICONAZOLE NITRATE 2% POWDER TOPICAL TP BID
+210958.txt|LINEZOLID::1858::1867|190376|600 MG::1868::1874|||PO::1875::1877|BID::1878::1881||linezolid 600 MG|331505|LINEZOLID 600 MG PO BID Starting Today ( 0/4 )
+210958.txt|NEXIUM ( ESOMEPRAZOLE ::2073::2095|284799::283742|20 MG::2097::2102|||PO::2103::2105|QD::2106::2108||Esomeprazole 20 MG [Nexium]|574982|NEXIUM ( ESOMEPRAZOLE ) 20 MG PO QD
+210958.txt|ACETYLSALICYLIC ACID::2109::2129|1191|325 MG::2130::2136|||PO::2137::2139|QD::2140::2142||Aspirin 325 MG|317300|ACETYLSALICYLIC ACID 325 MG PO QD
+210958.txt|WARFARIN::2225::2233|11289|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; ASPIRIN
+210958.txt|ASPIRIN::2240::2247|1191|||||||||POTENTIALLY SERIOUS INTERACTION: WARFARIN &amp; ASPIRIN
+210958.txt|DDI::3234::3237|3364|||||||||DDI pacer on coumadin who has had history of recurrent LE ulcerations
+210958.txt|coumadin::3247::3255|202421|||||||||DDI pacer on coumadin who has had history of recurrent LE ulcerations
+210958.txt|unasyn::3488::3494|57773||||IV::3485::3487||5
+days::3499::3505|||She was treated with IV unasyn for 5
+210958.txt|Linezolid::3522::3531|190376|||||||||days and switched to Linezolid as out pt med.
+210958.txt|cipro::4396::4401|203563|||||||||and cipro.
+210958.txt|linezolid::4575::4584|190376|||||||||ID recommended D/c vanc and levo and starting linezolid.
+210958.txt|hydrate::4837::4844|217602|||||||||hydrate.
+210958.txt|glyburide::4865::4874|4815|||||||||4. ) DMII - on glyburide , ADA diet , RISS ---
+210958.txt|DDI::4915::4918|3364|||||||||5. ) AF/SSS - has DDI PPM in and is on coumadin ---
+210958.txt|coumadin::4936::4944|202421|||||||||5. ) AF/SSS - has DDI PPM in and is on coumadin ---
+210958.txt|linezolid::5294::5303|190376|||||||||Abx- linezolid for 6 wks
+241468.txt|AMIODARONE::496::506|703|100 MG::507::513|||PO::514::516|DAILY::517::522||||AMIODARONE 100 MG PO DAILY
+241468.txt|NORVASC ( AMLODIPINE ::523::544|58927::17767|10 MG::546::551|||PO::552::554|DAILY::555::560||Amlodipine 10 MG [Norvasc]|572746|NORVASC ( AMLODIPINE ) 10 MG PO DAILY HOLD IF: SBP&lt;100
+241468.txt|TEARS NATURALE::663::677|220187||||OU::706::708|TID::709::712||||TEARS NATURALE ( ARTIFICIAL TEARS ) 2 DROP OU TID
+241468.txt|COLACE ( DOCUSATE SODIUM ::713::738|82000::71722|100 MG::740::746|||PO::747::749|BID::750::753||Docusate Sodium 100 MG|1099278|COLACE ( DOCUSATE SODIUM ) 100 MG PO BID
+241468.txt|NEXIUM ( ESOMEPRAZOLE ::754::776|284799::283742|20 MG::778::783|||PO::784::786|DAILY::787::792||Esomeprazole 20 MG [Nexium]|574982|NEXIUM ( ESOMEPRAZOLE ) 20 MG PO DAILY
+241468.txt|LASIX ( FUROSEMIDE ::793::812|202991::4603|20 MG::814::819|||PO::820::822|DAILY::823::828||Furosemide 20 MG [Lasix]|565450|LASIX ( FUROSEMIDE ) 20 MG PO DAILY
+241468.txt|LASIX::918::923|202991||||PO::924::926|||||on order for LASIX PO ( ref # 303056018 )
+241468.txt|NEURONTIN ( GABAPENTIN ::1034::1057|196498::25480|300 MG::1059::1065|||PO::1066::1068|TID::1069::1072||gabapentin 300 MG [Neurontin]|563878|NEURONTIN ( GABAPENTIN ) 300 MG PO TID
+241468.txt|GLIPIZIDE::1073::1082|4821|2.5 MG::1083::1089|||PO::1090::1092|DAILY::1093::1098||Glipizide 2.5 MG|330349|GLIPIZIDE 2.5 MG PO DAILY
+241468.txt|GLIPIZIDE::1185::1194|4821||||PO::1195::1197|||||on order for GLIPIZIDE PO ( ref # 037195892 )
+241468.txt|MICRONASE::1401::1410|203289||||PO::1411::1413|||||on order for MICRONASE PO ( ref # 037195892 )
+241468.txt|PLAQUENIL SULFATE ( HYDROXYCHLOROQUINE ::1521::1560|202462::5521|200 MG::1562::1568|||PO::1569::1571|BID::1572::1575||||PLAQUENIL SULFATE ( HYDROXYCHLOROQUINE ) 200 MG PO BID
+241468.txt|ISORDIL ( ISOSORBIDE DINITRATE ::1625::1656|151187::6058|20 MG::1658::1663|||PO::1664::1666|TID::1667::1670||Isosorbide Dinitrate 20 MG [Isordil]|793866|ISORDIL ( ISOSORBIDE DINITRATE ) 20 MG PO TID
+241468.txt|LISINOPRIL::1691::1701|29046|20 MG::1702::1707|||PO::1708::1710|DAILY::1711::1716||Lisinopril 20 MG|316153|LISINOPRIL 20 MG PO DAILY HOLD IF: SBP&lt;100
+241468.txt|POTASSIUM CHLORIDE::1844::1862|8591|||||||||POTENTIALLY SERIOUS INTERACTION: POTASSIUM CHLORIDE &amp;
+241468.txt|LISINOPRIL::1869::1879|29046|||||||||LISINOPRIL
+241468.txt|POTASSIUM CHLORIDE::1913::1931|8591|||||||||POTENTIALLY SERIOUS INTERACTION: POTASSIUM CHLORIDE &amp;
+241468.txt|LISINOPRIL::1938::1948|29046|||||||||LISINOPRIL Reason for override: WILL FOLLOW
+241468.txt|NITROGLYCERIN::1982::1995|4917|0.4 MG::2004::2010|1::2013::2014|TAB::2015::2018||Q5MIN::2022::2027`PRN::2038::2041||Nitroglycerin 0.4 MG|316365|NITROGLYCERIN 1/150 ( 0.4 MG ) 1 TAB SL Q5MIN X 3 doses
+241468.txt|MULTIVITAMIN::2080::2092|89905|||||||||MULTIVITAMIN THERAPEUTIC ( THERAPEUTIC MULTIVI... )
+241468.txt|THERAPEUTIC ( THERAPEUTIC ::2093::2119|220281::220281||1::2132::2133|TAB::2134::2137|PO::2138::2140|DAILY::2141::2146||||MULTIVITAMIN THERAPEUTIC ( THERAPEUTIC MULTIVI... )
+241468.txt|TRAZODONE::2147::2156|10737|25 MG::2157::2162|||PO::2163::2165|PRN::2174::2177||Trazodone 25 MG|439360|TRAZODONE 25 MG PO BEDTIME PRN Insomnia
+241468.txt|QUININE::2283::2290|9071||||||||| QUININE , Aspirin , Sulfa , Penicillins
+241468.txt|Aspirin::2293::2300|1191||||||||| QUININE , Aspirin , Sulfa , Penicillins
+241468.txt|Penicillins::2311::2322|70618||||||||| QUININE , Aspirin , Sulfa , Penicillins
+241468.txt|MS ( S::2563::2569|218149|||||||||s/p St. Jude MVR for MS ( S/P cardiac valve replacement ) Hx AFib/flutte
+241468.txt|coumadin::3453::3461|202421|||||||||coumadin , RA , h/o DVT/PE
+241468.txt|coumadin::4005::4013|202421|||||||||admitted , so coumadin held.
+241468.txt|coumadin::4101::4109|202421|||||||||HEME - Hold coumadin for goal INR 2.5-3 , restart when appropriate
+241468.txt|coumadin::4319::4327|202421|||||on Mon::4328::4334|||| 1. Please check pt's INR on coumadin on Mon 10/18 and forward results to
+241468.txt|coumadin::4401::4409|202421|||||||||Bertram Lenkiewicz so pt can restart coumadin when appropriate
+241468.txt|coumadin::4508::4516|202421|||||||||1. Please f/u pt's INR and restart coumadin when appropriate
+379569.txt|ALBUTEROL::495::504|435||2::513::514|PUFF::515::519||||||ALBUTEROL INHALER 2 PUFF INH QID
+379569.txt|INH::520::523|6038|||||QID
+PRN::524::531||||ALBUTEROL INHALER 2 PUFF INH QID
+379569.txt|LASIX ( FUROSEMIDE ::563::582|202991::4603|20 MG::584::589|||PO::590::592|QD::593::595||Furosemide 20 MG [Lasix]|565450|LASIX ( FUROSEMIDE ) 20 MG PO QD Starting Today ( 10/19 )
+379569.txt|Today::605::610|896747|20mg::660::664`40mg::665::669`60mg::670::674||||||||LASIX ( FUROSEMIDE ) 20 MG PO QD Starting Today ( 10/19 )
+379569.txt|MOTRIN ( IBUPROFEN ::731::750|202488::5640|600 MG::752::758|||PO::759::761|Q6H PRN::762::769||Ibuprofen 600 MG [Motrin]|565715|MOTRIN ( IBUPROFEN ) 600 MG PO Q6H PRN Pain , Headache
+379569.txt|MOTRIN::930::936|202488||||PO::937::939|||||on order for MOTRIN PO ( ref # 234611479 )
+379569.txt|Aspirin::990::997|1191|||||||||Pt. has a POSSIBLE allergy to Aspirin; reaction is Unknown.
+379569.txt|motrin::1054::1060|202488|||||||||Reason for override: pt tolerates motrin
+379569.txt|ATROVENT::1061::1069|151390|||||||||ATROVENT HFA INHALER ( IPRATROPIUM INHALER )
+379569.txt|IPRATROPIUM::1084::1095|7213||2::1106::1107|PUFF::1108::1112||||||ATROVENT HFA INHALER ( IPRATROPIUM INHALER )
+379569.txt|INH::1113::1116|6038|||||QID::1117::1120||||2 PUFF INH QID
+379569.txt|MAGNESIUM OXIDE::1121::1136|6582|560 MG::1137::1143|||PO::1144::1146|QD::1147::1149||||MAGNESIUM OXIDE 560 MG PO QD
+379569.txt|VERAPAMIL::1150::1159|11170|120 MG::1178::1184|||PO::1185::1187|QD::1188::1190||Verapamil 120 MG|328822|VERAPAMIL SUSTAINED RELEASE 120 MG PO QD
+379569.txt|KEFLEX ( CEPHALEXIN ::1358::1378|203167::2231|250 MG::1380::1386|||PO::1387::1389|QID::1390::1393||Cephalexin 250 MG [Keflex]|572514|KEFLEX ( CEPHALEXIN ) 250 MG PO QID X 10 doses
+379569.txt|ZOCOR ( SIMVASTATIN ::1524::1544|196503::36567|20 MG::1546::1551|||PO::1552::1554|QHS::1555::1558||Simvastatin 20 MG [Zocor]|563654|ZOCOR ( SIMVASTATIN ) 20 MG PO QHS
+379569.txt|AMBIEN ( ZOLPIDEM TARTRATE ::1641::1668|131725::221183|10 MG::1670::1675|||PO::1676::1678|QHS PRN::1679::1686||Zolpidem tartrate 10 MG [Ambien]|854874|AMBIEN ( ZOLPIDEM TARTRATE ) 10 MG PO QHS PRN Insomnia
+379569.txt|LORATADINE::1793::1803|28889|10 MG::1804::1809|||PO::1810::1812|QD::1813::1815||Loratadine 10 MG|316167|LORATADINE 10 MG PO QD Food/Drug Interaction Instruction
+379569.txt|POTASSIUM CHLORIDE::1961::1979|8591|20 MEQ::2011::2017|||PO::2018::2020|QD::2021::2023||Potassium Chloride 20 MEQ|316547|POTASSIUM CHLORIDE SLOW REL. ( KCL SLOW RELEASE )
+379569.txt|Potassium Chloride::2034::2052|8591|20 mEq::2066::2072||||||Potassium Chloride 20 MEQ|316547|20 MEQ PO QD As per AH Potassium Chloride Policy:
+379569.txt|METFORMIN::2109::2118|6809|250 MG::2123::2129|||PO::2130::2132|BID::2133::2136`IN AM::2146::2151||Metformin 250 MG|330861|METFORMIN 1 , 250 MG PO BID Starting IN AM ( 10/19 )
+379569.txt|RHINOCORT AQUA ( BUDESONIDE ::2162::2190|152303::19831|||||||||RHINOCORT AQUA ( BUDESONIDE NASAL INHALER )
+379569.txt|NASAL::2190::2195|218608||2::2206::2207|NASAL INHALER::2190::2203`SPRAY::2208::2213||||||RHINOCORT AQUA ( BUDESONIDE NASAL INHALER )
+379569.txt|INH::2214::2217|6038|||||BID::2218::2221||||2 SPRAY INH BID
+379569.txt|SINGULAIR ( MONTELUKAST ::2222::2246|153889::88249|10 MG::2248::2253|||PO::2254::2256|QD::2257::2259||montelukast 10 MG [Singulair]|565420|SINGULAIR ( MONTELUKAST ) 10 MG PO QD
+379569.txt|EFFEXOR XR ( VENLAFAXINE ::2260::2285|153570::39786|75 MG::2304::2309|||PO::2310::2312|QD::2313::2315||venlafaxine 75 MG|328801|EFFEXOR XR ( VENLAFAXINE EXTENDED RELEASE ) 75 MG PO QD
+379569.txt|ADVAIR DISKUS::2360::2373|284649|||||||||ADVAIR DISKUS 250/50 ( FLUTICASONE PROPIONATE/... )
+379569.txt|FLUTICASONE::2383::2394|41126||1::2412::2413|PUFF::2414::2418||||||ADVAIR DISKUS 250/50 ( FLUTICASONE PROPIONATE/... )
+379569.txt|INH::2419::2422|6038|||||BID::2423::2426||||1 PUFF INH BID
+379569.txt|NEXIUM ( ESOMEPRAZOLE ::2427::2449|284799::283742|40 MG::2451::2456|||PO::2457::2459|QD::2460::2462||Esomeprazole 40 MG [Nexium]|574983|NEXIUM ( ESOMEPRAZOLE ) 40 MG PO QD
+379569.txt|OXYCODONE::2463::2472|7804|10 MG::2473::2478|||PO::2479::2481|Q4H PRN::2482::2489||Oxycodone 10 MG|330592|OXYCODONE 10 MG PO Q4H PRN Pain
+379569.txt|Sodium::2641::2647|9853||||||||| 2 gram Sodium
+379569.txt|broccoli::2805::2813|899386||||||||| broccoli , Aspirin
+379569.txt|Aspirin::2816::2823|1191||||||||| broccoli , Aspirin
+379569.txt|DDI::3111::3114|3364|||||||||7/13/05: Metronic dual chamber DDI/ICD paced under general anesthesia
+379569.txt|DDI::3309::3312|3364||||||||| 53yoF w/ HCM s/p medtronic dual chamber DDI/ICD placement under
+379569.txt|lasix::3811::3816|202991|||||||||Also HF symptoms controlled on lasix , at baseline can work
+379569.txt|albuterol::4105::4114|435|||||||||Admission Meds: albuterol , advair 250/50 bid , rhinocort 2 sprays bid ,
+379569.txt|advair::4117::4123|301543||50::4128::4130|||bid::4131::4134||||Admission Meds: albuterol , advair 250/50 bid , rhinocort 2 sprays bid ,
+379569.txt|rhinocort::4137::4146|196488||2::4147::4148|sprays::4149::4155||bid::4156::4159||||Admission Meds: albuterol , advair 250/50 bid , rhinocort 2 sprays bid ,
+379569.txt|atrovent::4162::4170|151390||2::4171::4172|puff::4173::4177||qid::4178::4181||||atrovent 2 puff qid , singulair 10mg qhs , nexium 40mg daily , lasix
+379569.txt|singulair::4184::4193|153889|10mg::4194::4198||||qhs::4199::4202||||atrovent 2 puff qid , singulair 10mg qhs , nexium 40mg daily , lasix
+379569.txt|nexium::4205::4211|284799|40mg::4212::4216||||daily::4217::4222||||atrovent 2 puff qid , singulair 10mg qhs , nexium 40mg daily , lasix
+379569.txt|lasix::4225::4230|202991|20mg::4231::4235`20meq::4282::4287||||daily::4236::4241`daily::4288::4293||||atrovent 2 puff qid , singulair 10mg qhs , nexium 40mg daily , lasix
+379569.txt|verapamil::4296::4305|11170|120mg::4306::4311||||daily::4312::4317||Verapamil 120 MG|328822|daily , verapamil 120mg daily , patanol 1-2 OU bid prn , loratidine 10mg
+379569.txt|patanol::4320::4327|219114|10mg::4356::4360|1-2::4328::4331||OU::4332::4334|bid prn::4335::4342`daily::4361::4366||||daily , verapamil 120mg daily , patanol 1-2 OU bid prn , loratidine 10mg
+379569.txt|zocor::4369::4374|196503|20mg::4375::4379||||qhs::4380::4383||||daily , zocor 20mg qhs , effexor 75mg daily , metformin 1250mg bid ,
+379569.txt|effexor::4386::4393|151692|75mg::4394::4398||||daily::4399::4404||||daily , zocor 20mg qhs , effexor 75mg daily , metformin 1250mg bid ,
+379569.txt|metformin::4407::4416|6809|1250mg::4417::4423`500mg::4438::4443||||bid::4424::4427`daily::4444::4449||||daily , zocor 20mg qhs , effexor 75mg daily , metformin 1250mg bid ,
+379569.txt|ambien::4452::4458|131725|||||prn::4459::4462||||mgoxide 500mg daily , ambien prn , amox prior to procedures
+379569.txt|aspirin::4514::4521|1191|||||||||all: aspirin , broccoli , tape
+379569.txt|broccoli::4524::4532|899386|||||||||all: aspirin , broccoli , tape
+379569.txt|ctab::4926::4930|288999|||||||||ctab , no c/w/r CV: rr , nl s1 s2 , 3/6 SM at RUSB but heard throughout
+379569.txt|DDI::5505::5508|3364|||||||||4/29 s/p Medtronic ICD/DDI PPM placement , cannulated via left cephalic
+379569.txt|lasix::5876::5881|202991|40mg::5882::5886`500cc::5912::5917||||on day::5887::5893||||Pt diuresed w/ lasix 40mg on day of d/c
+379569.txt|lasix::6069::6074|202991|||||||||home and adjusting her lasix dose as she normally does based on her
+379569.txt|verapamil::6158::6167|11170|||||||||Continued on home cardiac regimen verapamil and zocor.
+379569.txt|zocor::6172::6177|196503|||||||||Continued on home cardiac regimen verapamil and zocor.
+379569.txt|DDI::6216::6219|3364|||||||||--rhythm: s/p Medtronic dual chamber DDI/ICD placement for primary
+379569.txt|metformin::6638::6647|6809|||||on morning::6648::6658||||restarted metformin on morning of d/c.
+379569.txt|effexor::6679::6686|151692||||||||| cont effexor
+379569.txt|Lasix::6812::6817|202991||||||||| *Please monitor your weight and swelling and adjust Lasix dose as your
+379569.txt|Keflex::6974::6980|203167||||||3 day::6985::6990|||*Take Keflex for 3 day total course.

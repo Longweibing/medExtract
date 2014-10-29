@@ -16,6 +16,8 @@ public class FilterManager {
 		filters.add(new AllergyFilter());
 		filters.add(new SectionFilter());
 		filters.add(new InsulinFilter());
+		filters.add(new BadDrugFilter());
+		filters.add(new RegimenFilter());
 	}
 	
 	private static int isNM(String s) {

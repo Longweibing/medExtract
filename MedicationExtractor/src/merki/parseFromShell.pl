@@ -24,5 +24,5 @@ while(<>) {
     $input .= $_;
 }
 
-my $drugs = $parser->twoLevelParse($input, ['drug', 'possibleDrug', 'context'], ['dose', 'route', 'freq', 'prn', 'date']);	
+my $drugs = $parser->twoLevelParse($input, ['drug', 'possibleDrug', 'context'], ['dose', 'route', 'freq', 'prn', 'date','howLong']);	
 print $parser->drugsToXML($drugs);
