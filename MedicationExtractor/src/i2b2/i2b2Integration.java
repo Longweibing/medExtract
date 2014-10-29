@@ -66,7 +66,7 @@ public class i2b2Integration {
 				args[2]="-g";
 				args[3]=goldXML.getAbsolutePath();
 				args[4]="-s";
-				args[5]=goldXML.getAbsolutePath();
+				args[5]=testXML.getAbsolutePath();
 				printArr(args);
 				p = rt.exec(args,null,homeDirectory);
 				stream=p.getInputStream();

@@ -14,11 +14,13 @@ import java.io.InputStreamReader;
 
 import org.apache.medex.MedEx;
 import org.apache.medex.MedTagger;
+import org.apache.uima.resource.ResourceInitializationException;
 
 import drugs.DrugEntry;
 import drugs.DrugUtils;
 import filter.FilterManager;
 import medex.MedexResultsParser;
+import medxn.MedXNParser;
 import merki.MerkiIntegration;
 import text.DischargeDocument;
 import text.HeaderFinder;
@@ -42,6 +44,7 @@ public class Main {
 	 * @param inputDirectory
 	 * @param outputDirectory
 	 * @throws IOException 
+	 * @throws ResourceInitializationException 
 	 */
 	
 	/*
@@ -56,8 +59,12 @@ public class Main {
 	 * 		f) Filter out DrugEntries based on common sources of false-positives
 	 * 		g) For each document, write out results to the output directory
 	 */
-	private static void getResults(File inputDirectory, File outputDirectory) throws IOException {
+	private static void getResults(File inputDirectory, File outputDirectory) throws IOException, ResourceInitializationException {
 		//reads in section lexicons and stores them in memory for the duration of the execution
+		
+		MedXNParser.runMedXN();
+
+		
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
 		File goldStandard=getResource("/resources/StudentData/goldStandards/gold.xml");
 		File records=getResource("/resources/StudentData/studentTrainingFiles");
@@ -107,7 +114,7 @@ public class Main {
 			
 			//filter out duplicates
 			System.out.println("filtering out duplicates");
-			DrugUtils.filterDuplicateDrugs(text);
+			//DrugUtils.filterDuplicateDrugs(text);
 			//TODO: Down here, we will want a function that takes a DischargeDocument that 
 			//already has medications loaded into it and adds as many reasons as possible. (MetaMap)
 			
@@ -156,7 +163,9 @@ public class Main {
 			FilterManager.runAllFilters(text);
 			
 			System.out.println("printing out results");
-			File outputFile=new File(finalOutput,f.getName()+".i2b2.entries");
+			System.out.println(f.getName());
+			
+			File outputFile=new File(finalOutput,(f.getName().replace(".txt", ""))+".i2b2.entries");
 			
 			FileUtils.writeFile(text.getDrugData(), outputFile);
 			
@@ -169,9 +178,11 @@ public class Main {
 	}
 	
 	
-	public static void main(String[] args) throws IOException {
-		getResults(new File("/Users/fortylashes/Documents/Health_Data_Analytics/Project2/StudentData/studentTrainingFiles"), 
-				new File("/Users/fortylashes/Documents/Health_Data_Analytics/Project2/StudentData/studentOutput"));
+
+	public static void main(String[] args) throws IOException, ResourceInitializationException {
+		getResults(getResource("/resources/StudentData/studentTrainingFiles"), 
+				new File(getResource("/resources/StudentData"),"output"));
+
 		/*
 		//just some test code running merki on a file
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt")); //read the sections.txt file to get a list of sections

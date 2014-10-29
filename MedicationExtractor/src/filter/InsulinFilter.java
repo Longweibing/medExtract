@@ -20,7 +20,6 @@ public class InsulinFilter extends Filter {
 			DrugEntry e=iter.next();
 			if (StringUtils.containsIgnoreCase(e.getName(), "insulin")) {
 				String context=text.getSurroundingText(e.getDrugIndex(), 60);
-				System.out.println(context);
 				if (StringUtils.containsIgnoreCase(context, "dependent")) {
 					iter.remove();
 				}

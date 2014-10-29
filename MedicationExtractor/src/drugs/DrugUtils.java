@@ -50,6 +50,22 @@ public class DrugUtils {
 		}
 	}
 	
+	private static boolean doOverlap(int start1, int end1, int start2, int end2) {
+		//check for any overlap between the ranges
+				if (start1>=start2 && start1<=end2) {
+					return true;
+				}
+				if (end1>=start2 && end1<=end2) {
+					return true;
+				}
+				if (start2>=start1 && start2<=end1) {
+					return true;
+				}
+				if (end2>=start1 && end2<=end1) {
+					return true;
+				}
+				return false;
+	}
 	
 	/**
 	 * Checks to see if two drug entries are about the same drug. Two
@@ -61,28 +77,64 @@ public class DrugUtils {
 	 * @param b
 	 * @return
 	 */
+	
+	
 	public static boolean areSame(DrugEntry a, DrugEntry b) {
 		int start1=a.getDrugIndex();
 		int end1=start1+a.getName().length(); // end is inclusive
 		int start2=b.getDrugIndex();
 		int end2=start2+b.getName().length();
+		boolean drugMatch=doOverlap(start1,end1,start2,end2);
 		
-		//check for any overlap between the ranges
-		if (start1>=start2 && start1<=end2) {
-			return true;
+		//drugs are not at the same point in the text, so they can't match
+		if (!drugMatch) {
+			return false;
+			
 		}
-		if (end1>=start2 && end1<=end2) {
-			return true;
+		
+		//if they are at the same point in the text, they may still be different if they have different dosages
+		if (!a.getDosage().equals("nm") && !b.getDosage().equals("nm")) {
+			start1=a.getDosageIndex();
+			end1=start1+a.getDosage().length(); // end is inclusive
+			start2=b.getDosageIndex();
+			end2=start2+b.getDosage().length();
+			
+			//dosages overlap, so they are the same
+			if (doOverlap(start1,end1,start2,end2)) {
+				return true;
+			}
+			//no dosage overlap, so they are different
+			return false;
 		}
-		if (start2>=start1 && start2<=end1) {
-			return true;
-		}
-		if (end2>=start1 && end2<=end1) {
-			return true;
-		}
-		return false;
+		
+		
+		//dosages not set, so they are the same
+		return true;
 	}
 	
+	/**
+	 * Creates a deep copy of the given drug entry and returns it as a new object
+	 * @param a
+	 * @return
+	 */
+	public static DrugEntry copyDrug(DrugEntry a) {
+		DrugEntry newEntry=new DrugEntry();
+		newEntry.setD(a.getDocument());
+		//make the start and end as wide as possible based on a and b
+		newEntry.setStartIndex(a.getStartIndex());
+		newEntry.setEndIndex(a.getEndIndex());
+		
+		newEntry.setName(a.getName());
+		newEntry.setFreq(a.getFreq());
+		newEntry.setDosage(a.getDosage());
+		newEntry.setMode(a.getMode());
+		newEntry.setReason(a.getReason());
+		newEntry.setDuration(a.getDuration());
+		newEntry.setContext(a.getContext());
+		newEntry.setDosageStartIndex(a.getDosageStartIndex());
+		
+		return newEntry;
+	}
 	
 	/**
 	 * Given two drug entries that are the same but which may not have all the same
@@ -115,7 +167,12 @@ public class DrugUtils {
 		newEntry.setReason(getAThenB(a.getReason(),b.getReason()));
 		newEntry.setDuration(getAThenB(a.getDuration(),b.getDuration()));
 		newEntry.setContext(getAThenB(a.getContext(),b.getContext()));
+		if (a.getDosageStartIndex()!=null) {
+			newEntry.setDosageStartIndex(a.getDosageStartIndex());
+		} else {
+			newEntry.setDosageStartIndex(b.getDosageStartIndex());
 
+		}
 		return newEntry;
 	}
 	
