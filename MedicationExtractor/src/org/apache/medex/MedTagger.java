@@ -226,7 +226,7 @@ public class MedTagger {
 			int note_num = 0;
 			for (File child : input_path.listFiles()) {
 				// System.out.println(child.getName());
-				if (".".equals(child.getName()) || "..".equals(child.getName()))
+				if (child.getName().startsWith(".") || ".".equals(child.getName()) || "..".equals(child.getName()))
 					continue; // Ignore the self and parent aliases.
 				if (child.isFile()) {
 					System.out.println("Processing file " + child.getName() + " ...");
