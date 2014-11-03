@@ -214,12 +214,43 @@ public class DischargeDocument {
 	 * @param size
 	 * @return
 	 */
+	
 	public String getSurroundingText(int index,int size) {
 		int startIndex=index-(size/2);
 		if (startIndex<0) {
 			startIndex=0;
 		}
 		int endIndex=index+(size/2);
+		if (endIndex>text.length()){
+			endIndex=text.length();
+		}
+		return text.substring(startIndex,endIndex);
+	}
+	/**
+	 * Doesn't include index
+	 * @param index
+	 * @param size
+	 * @return
+	 */
+	public String getPrevText(int index,int size) {
+		int startIndex=index-size;
+		if (startIndex<0) {
+			startIndex=0;
+		}
+		int endIndex=index;
+		if (endIndex>text.length()){
+			endIndex=text.length();
+		}
+		return text.substring(startIndex,endIndex);
+	}
+	
+	//includes
+	public String getNextText(int index,int size) {
+		int startIndex=index;
+		if (startIndex<0) {
+			startIndex=0;
+		}
+		int endIndex=index+size;
 		if (endIndex>text.length()){
 			endIndex=text.length();
 		}
