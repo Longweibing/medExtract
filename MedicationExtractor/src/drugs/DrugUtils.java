@@ -6,6 +6,56 @@ import text.DischargeDocument;
 
 public class DrugUtils {
 	
+	/**
+	 * Takes reasons from b and puts them in matching drugs in a.
+	 * @param a
+	 * @param b
+	 */
+	public static void mergeDurationsInDocuments(DischargeDocument a, DischargeDocument b) {
+		boolean foundDupe=false;
+		List<DrugEntry> drugs=a.getDrugEntries();
+		List<DrugEntry> drugs2=b.getDrugEntries();
+		
+		
+		//pairwise compare all drugs. O(n squared), but with only double-digit drugs that is fine
+		while (true) {
+			foundDupe=false;
+		for (int i1=0;i1<drugs.size();i1++) {
+			for (int i2=0;i2<drugs2.size();i2++) {
+				DrugEntry d1=drugs.get(i1);
+				DrugEntry d2=drugs2.get(i2);
+				if (areSame(d1,d2,false)) {
+					foundDupe=true;
+					
+					drugs2.remove(d2);
+					//if d2 has a duration, set it in d1
+					if (!d2.getDuration().equals("nm")) {
+						int durationBegin=d2.getIndexOfString(d2.getDuration());
+						int durationEnd=d2.getIndexOfString(d2.getDuration())+d2.getDuration().length();
+						d1.setDuration(d2.getDuration());
+						d1.setEndIndex(Math.max(d1.getEndIndex(), durationEnd));
+						d1.setStartIndex(Math.min(d1.getStartIndex(), durationBegin));
+					}
+					
+					break;
+				} 
+				
+			}
+			if (foundDupe) {
+				break; //need to restart iteration since we changed the list
+			}
+			
+		}
+		
+			
+			if (!foundDupe) {
+				break;
+			}
+		}
+		
+		
+	}
+	
 	public static void mergeDrugsInDocuments(DischargeDocument a, DischargeDocument b) {
 		boolean foundDupe=false;
 		List<DrugEntry> drugs=a.getDrugEntries();
@@ -19,7 +69,7 @@ public class DrugUtils {
 			for (int i2=0;i2<drugs2.size();i2++) {
 				DrugEntry d1=drugs.get(i1);
 				DrugEntry d2=drugs2.get(i2);
-				if (areSame(d1,d2)) {
+				if (areSame(d1,d2,true)) {
 					//System.out.println(d1);
 					//System.out.println(d2);
 
@@ -74,7 +124,7 @@ public class DrugUtils {
 				for (int b=a+1;b<drugs.size();b++) {
 					DrugEntry d1=drugs.get(a);
 					DrugEntry d2=drugs.get(b);
-					if (areSame(d1,d2)) {
+					if (areSame(d1,d2,true)) {
 						
 						foundDupe=true;
 						DrugEntry mergedDrug=mergeEntries(d1,d2);
@@ -105,7 +155,7 @@ public class DrugUtils {
 		}
 	}
 	
-	private static boolean doOverlap(int start1, int end1, int start2, int end2) {
+	public static boolean doOverlap(int start1, int end1, int start2, int end2) {
 		//check for any overlap between the ranges
 				if (start1>=start2 && start1<=end2) {
 					return true;
@@ -134,7 +184,7 @@ public class DrugUtils {
 	 */
 	
 	
-	public static boolean areSame(DrugEntry a, DrugEntry b) {
+	public static boolean areSame(DrugEntry a, DrugEntry b, boolean useDosage) {
 		int start1=a.getDrugIndex();
 		int end1=start1+a.getName().length(); // end is inclusive
 		int start2=b.getDrugIndex();
@@ -147,20 +197,23 @@ public class DrugUtils {
 			
 		}
 		
-		//if they are at the same point in the text, they may still be different if they have different dosages
-		if (!a.getDosage().equals("nm") && !b.getDosage().equals("nm")) {
-			start1=a.getDosageIndex();
-			end1=start1+a.getDosage().length(); // end is inclusive
-			start2=b.getDosageIndex();
-			end2=start2+b.getDosage().length();
-			
-			//dosages overlap, so they are the same
-			if (doOverlap(start1,end1,start2,end2)) {
-				return true;
+		if (useDosage) {
+			//if they are at the same point in the text, they may still be different if they have different dosages
+			if (!a.getDosage().equals("nm") && !b.getDosage().equals("nm")) {
+				start1=a.getDosageIndex();
+				end1=start1+a.getDosage().length(); // end is inclusive
+				start2=b.getDosageIndex();
+				end2=start2+b.getDosage().length();
+				
+				//dosages overlap, so they are the same
+				if (doOverlap(start1,end1,start2,end2)) {
+					return true;
+				}
+				//no dosage overlap, so they are different
+				return false;
 			}
-			//no dosage overlap, so they are different
-			return false;
 		}
+		
 		
 		
 		//dosages not set, so they are the same
@@ -206,7 +259,7 @@ public class DrugUtils {
 	
 	
 	public static DrugEntry mergeEntries(DrugEntry a, DrugEntry b) {
-		if (!areSame(a,b)) {
+		if (!areSame(a,b,true)) {
 			return null;
 		}
 		DrugEntry newEntry=new DrugEntry();

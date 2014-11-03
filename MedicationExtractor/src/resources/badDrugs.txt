@@ -1,5 +1,7 @@
 oxygen
 insomnia
+ms
+mr
 anticoagulation
 factor xiii
 other analgesics
@@ -78,3 +80,14 @@ elemental
 colon
 versed
 refusal
+diuresis
+over-the-counter
+your medications
+helicobacter pylori
+symmetry
+new medications
+these medications
+your medications
+cx
+at 10
+c

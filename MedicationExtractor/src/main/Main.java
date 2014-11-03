@@ -18,6 +18,9 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import drugs.DrugEntry;
 import drugs.DrugUtils;
+import drugs.DurationFinder;
+import drugs.FrequencyFinder;
+import drugs.ReasonFinder;
 import filter.BadDrugFilter;
 import filter.FilterManager;
 import medex.MedexResultsParser;
@@ -28,8 +31,10 @@ import text.HeaderFinder;
 import text.Section;
 //import gov.nih.nlm.nls.skr.*
 import gov.nih.nlm.nls.skr.*;
-import java.util.Iterator;
 import metamap.metaMap;
+
+import java.util.Iterator;
+
 
 public class Main {
 	public static File getResource(String name) {
@@ -65,16 +70,17 @@ public class Main {
 		
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
 		BadDrugFilter.compileBadDrugList(getResource("/resources/badDrugs.txt"));
-		System.out.println(outputDirectory);
 		File goldStandard=getResource("/resources/StudentData/goldStandards/gold.xml");
 		File medexOutput=new File(outputDirectory, "medex");
 		File finalOutput=new File(outputDirectory, "results");
+		File metamapOutput=new File(outputDirectory,"metamap");
 		
 		HashSet<String> drugNames=new HashSet<String>();
 		File medXNOutput=new File(outputDirectory,"cpe/output.out");
 		
 		finalOutput.mkdirs();
 		medexOutput.mkdirs();
+		metamapOutput.mkdirs();
 		FilterManager.loadFilters();
 		i2b2Integration i2b2=new i2b2Integration(getResource("/i2b2").getAbsolutePath(),
 				goldStandard.getAbsolutePath(),inputDirectory.getAbsolutePath(), finalOutput.getAbsolutePath());
@@ -84,24 +90,24 @@ public class Main {
 
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
-                
-                
-                String extensionOutputFileName = outputDirectory+"projectExtension.csv";
-                
-                ////COMMENT THIS PART OUT AFTER YOU RUN THE TRAINING CASES///
-                ProjectExtension partCCreator = new ProjectExtension();
-                partCCreator.ProjectExtensionFileCreator(extensionOutputFileName);
-                //////////////////////////////////////////////////////////////////
-                
+		 
+        String extensionOutputFileName = outputDirectory+"projectExtension.csv";
+        
+        ////COMMENT THIS PART OUT AFTER YOU RUN THE TRAINING CASES///
+        ProjectExtension partCCreator = new ProjectExtension();
+        partCCreator.ProjectExtensionFileCreator(extensionOutputFileName);
+        //////////////////////////////////////////////////////////////////
 
 		//store all documents so we can output them at the end
 		List<DischargeDocument> docs=new ArrayList<DischargeDocument>();
 		for (File f : inputDirectory.listFiles()) {
-                        if (f.getName().startsWith(".")) {
-                            continue;
-                        }
-                        System.out.println(f);
-
+			if (f.getName().startsWith(".")) {
+				continue;
+            }
+			if (!f.getName().equals("11995")) {
+				//continue;
+			}
+			System.out.println(f.getName());
 			DischargeDocument text=new DischargeDocument(f);
 			DischargeDocument text2=new DischargeDocument(f);
 			DischargeDocument text3=new DischargeDocument(f);
@@ -113,41 +119,51 @@ public class Main {
 			MedexResultsParser.parseMedexResults(text, new File(medexOutput,f.getName()));
 			//part c above. Adds all drugs MERKI can find to this element
 			//System.out.println("running MERKI");
-			i.runMerki(text3);
+			//i.runMerki(text3);
 			
 			//System.out.println("parsing MedXN results");
 			//trying to make MedXN supplementary only
 			MedXNParser.parseMedXNResults(text2, medXNOutput);
 			
 			DrugUtils.mergeDrugsInDocuments(text, text2);
-			DrugUtils.mergeDrugsInDocuments(text,text3);
+			//DrugUtils.mergeDurationsInDocuments(text,text3); //only use MERKI for durations
 			//filter out duplicates
 			//System.out.println("filtering out duplicates");
 			DrugUtils.filterDuplicateDrugs(text);
 			
-                        //part e above. Using the metaMap class
-                        File G = new File(outputDirectory, "metaMapTemp.txt");
-                        metaMap.runMetaMap(text, G);
-                        //End Part E//
+			DurationFinder.findDurations(text);
+			FrequencyFinder.findFreqs(text);
+			ReasonFinder.findReasons(text);
+			
+			System.out.println("running MetaMap");
+			File G = new File(outputDirectory, "metaMapTemp.txt");
+            metaMap.runMetaMap(text, G);
 			
 			//step f above. New filters can be defined in the filter package
 			//System.out.println("filtering out false positives");
 			FilterManager.runAllFilters(text);
 			
-                        //Part C Project Extension//
-                        ProjectExtension partC = new ProjectExtension();
-                        partC.setFileName(f.getName());
-                        partC.ProjectExtensionParameterizer(text);
-                        String partCOutput = partC.toString();
-                        partC.ProjectExtensionWriter(partCOutput, extensionOutputFileName);
-                        //End Part C Project Extension//
-                        
-                        
+			
+			 //Part C Project Extension//
+            ProjectExtension partC = new ProjectExtension();
+            partC.setFileName(f.getName());
+            partC.ProjectExtensionParameterizer(text);
+            String partCOutput = partC.toString();
+            partC.ProjectExtensionWriter(partCOutput, extensionOutputFileName);
+            //End Part C Project Extension//
+			
+			
 			//System.out.println("printing out results");
 			
 			File outputFile=new File(finalOutput,(f.getName().replace(".txt", ""))+".i2b2.entries");
 			
 			for (DrugEntry e : text.getDrugEntries()) {
+				if (!e.getDuration().equals("nm")) {
+					System.out.println("found duration = "+e.getDuration() +" "+e.getDurationOffset());
+				}
+				if (!e.getReason().equals("nm")) {
+					System.out.println("found reason = "+e.getReason() +" "+e.getReasonOffset());
+				}
 				drugNames.add(e.getName().toLowerCase().trim().replace("\n", " "));
 			}
 			
@@ -168,9 +184,12 @@ public class Main {
 	
 
 	public static void main(String[] args) throws IOException, ResourceInitializationException {
-		getResults(getResource("/resources/StudentData/StudentTrainingFiles"), 
-				new File(getResource("/resources/StudentData"),"output"));
+		ReasonFinder.loadReasons(getResource("/resources/reasons.txt"));
+		ReasonFinder.loadBodyParts(getResource("/resources/bodyparts.txt"));
 
+		getResults(getResource("/resources/StudentData/studentTrainingFiles"), 
+				new File(getResource("/resources/StudentData"),"output"));
+		//System.out.println(ReasonFinder.matchString(ReasonFinder.getLongRegexes(), "I have some jaw pain in my face"));
 		/*
 		//just some test code running merki on a file
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt")); //read the sections.txt file to get a list of sections
