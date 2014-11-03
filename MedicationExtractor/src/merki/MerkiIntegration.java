@@ -61,7 +61,6 @@ public class MerkiIntegration {
 				//adjust indices to be absolute with relation to the document d.
 				e.setStartIndex(e.getStartIndex()+s.getStartIndex());
 				e.setEndIndex(e.getEndIndex()+s.getStartIndex());
-
 				entries.add(e);
 			}
 		}
@@ -161,7 +160,7 @@ public class MerkiIntegration {
 		
 		
 		e.setStartIndex(Integer.parseInt(getStringFromChild(element,"startChar")));
-		e.setEndIndex(Integer.parseInt(getStringFromChild(element,"endChar")));
+		e.setEndIndex(Integer.parseInt(getStringFromChild(element,"endChar"))+2);
 
 		return e;
 	}

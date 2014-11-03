@@ -2,7 +2,7 @@ package filter;
 
 import java.util.Iterator;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import drugs.DrugEntry;
 import text.DischargeDocument;

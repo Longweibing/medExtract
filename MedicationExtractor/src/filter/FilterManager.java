@@ -18,6 +18,8 @@ public class FilterManager {
 		filters.add(new InsulinFilter());
 		filters.add(new BadDrugFilter());
 		filters.add(new RegimenFilter());
+		filters.add(new DurationFilter());
+		filters.add(new NegationFilter());
 	}
 	
 	private static int isNM(String s) {

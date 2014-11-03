@@ -177,6 +177,11 @@ public class DrugEntry {
 		return this.getIndexOfString(this.getName());
 
 	}
+	//returns the absolute index of this drug
+		public int getDurationIndex() {
+			return this.getIndexOfString(this.getDuration());
+
+		}
 	public int getDosageIndex() {
 		if (dosage.equals("nm")) {
 			return -1;

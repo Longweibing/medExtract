@@ -309,8 +309,8 @@ sub matchPattern {		# breaking this out for profiling purposes
                          start=>$matchStart,
                          end=>$matchEnd, 
                          length=> $matchEnd - $matchStart + 1, 
-                         precedingText=>substr($text,max(0,$matchStart-30),min(30,$matchStart)),
-                         followingText=>substr($text,$matchEnd+1,30),
+                         precedingText=>substr($text,max(0,$matchStart-50),min(50,$matchStart)),
+                         followingText=>substr($text,$matchEnd+1,50),
                        };
 	}
 	return \@matched;
@@ -507,7 +507,7 @@ sub drugLookup_hashBased {
 	$text =~ m/^(.+?)$sd/;
 	confess "how can text [$text] be missing a right word boundary after the first word?" unless defined $1;
 	my $token = $1;
-	#printf "first word of %s is %s\n", substr($text,0,30), $token;
+	#printf "first word of %s is %s\n", substr($text,0,50), $token;
 	if( exists $druglist->{$token} ) {
 		for my $drug ( sort {length $b->{drugName} <=> length $a->{drugName} } @{$druglist->{$token}} ) {
 			return $drug if $text =~ m/^$drug->{drugName}$sd/;
@@ -608,7 +608,7 @@ sub drugLookup_binarySearchBased {
     my $start = 0;
     my $end = $#$drugnames;
     my $check;
-	#printf STDERR "drugLookup on [%s] [%s]\n", substr($text,$start,40), $drugnames->[$#$drugnames];
+	#printf STDERR "drugLookup on [%s] [%s]\n", substr($text,$start,60), $drugnames->[$#$drugnames];
     return undef if $text lt $drugnames->[0];
     return undef if $text gt $drugnames->[$#$drugnames];
     while( $start < $end ) {
@@ -623,7 +623,7 @@ sub drugLookup_binarySearchBased {
         }
         last;
     }
-    printf "binary ended at %6d [%20s] for [%30s]\n", $check, substr($drugnames->[$check],0,20), substr($text,0,30);
+    printf "binary ended at %6d [%20s] for [%50s]\n", $check, substr($drugnames->[$check],0,50), substr($text,0,50);
     my $matchingChars = matchingCharCount($text, $drugnames->[$check]);
     return undef unless $matchingChars >= $SHORTEST_DRUG_NAME;
     my ($backwards, $forwards) = ($check, $check);
