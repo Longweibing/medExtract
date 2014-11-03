@@ -32,6 +32,8 @@ import text.Section;
 //import gov.nih.nlm.nls.skr.*
 import gov.nih.nlm.nls.skr.*;
 import metamap.metaMap;
+import ProjectExtension.ProjectExtension;
+import ProjectExtension.LengthOfStay;
 
 import java.util.Iterator;
 
@@ -137,7 +139,7 @@ public class Main {
 			
 			System.out.println("running MetaMap");
 			File G = new File(outputDirectory, "metaMapTemp.txt");
-            metaMap.runMetaMap(text, G);
+                        metaMap.runMetaMap(text, G);
 			
 			//step f above. New filters can be defined in the filter package
 			//System.out.println("filtering out false positives");
@@ -145,12 +147,19 @@ public class Main {
 			
 			
 			 //Part C Project Extension//
-            ProjectExtension partC = new ProjectExtension();
-            partC.setFileName(f.getName());
-            partC.ProjectExtensionParameterizer(text);
-            String partCOutput = partC.toString();
-            partC.ProjectExtensionWriter(partCOutput, extensionOutputFileName);
-            //End Part C Project Extension//
+                        
+                        //Get Lenght of Stay//
+                        LengthOfStay los = new LengthOfStay();
+                        los.findDates(text.getText());//Sets all of the parameters by parsing through the document
+                        
+                        ProjectExtension partC = new ProjectExtension();
+                        partC.setFileName(f.getName());
+                        partC.ProjectExtensionParameterizer(text);
+                        Integer days = los.returnLOSDays();
+                        partC.setLengthOfStay(days);
+                        String partCOutput = partC.toString();
+                        partC.ProjectExtensionWriter(partCOutput, extensionOutputFileName);
+                        //End Part C Project Extension//
 			
 			
 			//System.out.println("printing out results");
