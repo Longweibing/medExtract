@@ -29,7 +29,7 @@ import text.Section;
 //import gov.nih.nlm.nls.skr.*
 import gov.nih.nlm.nls.skr.*;
 import java.util.Iterator;
-
+import metamap.metaMap;
 
 public class Main {
 	public static File getResource(String name) {
@@ -65,7 +65,7 @@ public class Main {
 		
 		Section.compileSections(getResource("/resources/sections.txt"),getResource("/resources/badSections.txt"),getResource("/resources/listSections.txt")); //read the sections.txt file to get a list of sections
 		BadDrugFilter.compileBadDrugList(getResource("/resources/badDrugs.txt"));
-		
+		System.out.println(outputDirectory);
 		File goldStandard=getResource("/resources/StudentData/goldStandards/gold.xml");
 		File medexOutput=new File(outputDirectory, "medex");
 		File finalOutput=new File(outputDirectory, "results");
@@ -85,17 +85,13 @@ public class Main {
 		MedTagger m=MedEx.getMedTagger(inputDirectory.getAbsolutePath(), medexOutput.getAbsolutePath());
 		m.run_batch_medtag();
                 
-                //making new 
-		GenericObject metaMapObject = new GenericObject("arcadiaperson", "3kjd83kdBn");
-                metaMapObject.setField("Email_Address", "michael-lash@uiowa.edu");
-                //myGenericObj.setFileField("UpLoad_File", "./sample.txt");
-                metaMapObject.setField("Batch_Command", "metamap -E");
-                //metaMapObject.setField("BatchNotes", "SKR Web API test");
-                metaMapObject.setField("SilentEmail", true);
-                //metaMapObject.setFileField("UpLoad_File", "/Users/fortylashes/Documents/Health_Data_Analytics/Project2/examples/sample.txt");
-                String res = metaMapObject.handleSubmission();
-                System.out.println(res);
                 
+                String extensionOutputFileName = outputDirectory+"projectExtension.csv";
+                
+                ////COMMENT THIS PART OUT AFTER YOU RUN THE TRAINING CASES///
+                ProjectExtension partCCreator = new ProjectExtension();
+                partCCreator.ProjectExtensionFileCreator(extensionOutputFileName);
+                //////////////////////////////////////////////////////////////////
                 
 
 		//store all documents so we can output them at the end
@@ -129,56 +125,24 @@ public class Main {
 			//System.out.println("filtering out duplicates");
 			DrugUtils.filterDuplicateDrugs(text);
 			
-			StringBuilder sb=new StringBuilder();
-			for (DrugEntry e: text.getDrugEntries()) {
-				sb.append(text.getSurroundingText(e.getStartIndex(), 100));
-				sb.append("\n");
-			}
-			
-                        //part e above. Using the define metamap "genericObject" to send a request
-                        //
-                        //
-                        //(1)Get the list of drugs
-                        List<DrugEntry> drugEntries = text.getDrugEntries();
+                        //part e above. Using the metaMap class
                         File G = new File(outputDirectory, "metaMapTemp.txt");
-                
-                        //(2)Iterate over the list of drugs
-                        Iterator<DrugEntry> drugEntIt = drugEntries.iterator();
-                        while(drugEntIt.hasNext()){
-                            //Get a handle on the object
-                            DrugEntry drugObj = drugEntIt.next();
-                            //Get the appropriate surrounding text
-                            String reasonTxt = text.getSurroundingText(drugObj.getStartIndex(), 100);
-                            FileUtils.writeFile(reasonTxt, G);
-                            //Set the appropriate field to the text containing th reason
-                            //System.out.println(G.getAbsolutePath());
-                            metaMapObject.setFileField("UpLoad_File", G.getAbsolutePath());
-                            //System.out.println(reasonTxt);
-                            //metaMapObject.setField("APIText", reasonTxt);
-                            //Send this to the metamap web api
-                            try{
-                               
-                                String results = metaMapObject.handleSubmission();
-                                System.out.print(results);
-
-                             }
-                            catch (RuntimeException ex) {
-                                System.err.println("");
-                                System.err.print("An ERROR has occurred while processing your");
-                                System.err.println(" request, please review any");
-                                System.err.print("lines beginning with \"Error:\" above and the");
-                                System.err.println(" trace below for indications of");
-                                System.err.println("what may have gone wrong.");
-                                System.err.println("");
-                                System.err.println("Trace:");
-                                ex.printStackTrace();
-                            } // catch
-                        }//Drug Iterator
+                        metaMap.runMetaMap(text, G);
+                        //End Part E//
 			
 			//step f above. New filters can be defined in the filter package
 			//System.out.println("filtering out false positives");
 			FilterManager.runAllFilters(text);
 			
+                        //Part C Project Extension//
+                        ProjectExtension partC = new ProjectExtension();
+                        partC.setFileName(f.getName());
+                        partC.ProjectExtensionParameterizer(text);
+                        String partCOutput = partC.toString();
+                        partC.ProjectExtensionWriter(partCOutput, extensionOutputFileName);
+                        //End Part C Project Extension//
+                        
+                        
 			//System.out.println("printing out results");
 			
 			File outputFile=new File(finalOutput,(f.getName().replace(".txt", ""))+".i2b2.entries");
